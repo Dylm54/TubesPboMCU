@@ -9,6 +9,7 @@ public class Pasien extends User{
     
     public Pasien(String id, String nama, String alamat, String noTelp) {
         super(id, nama, alamat, noTelp);
+        
     }
 
     public List<PendaftaranMCU> getRiwayatPendaftaran() {
