@@ -1,5 +1,8 @@
 package com.mcu.web.repositories;
 
-public class PaketMCURepository {
+import org.springframework.data.mongodb.repository.MongoRepository;
+import com.mcu.web.models.PaketMCU;
+
+public interface PaketMCURepository extends MongoRepository<PaketMCU, String> {
     
 }
