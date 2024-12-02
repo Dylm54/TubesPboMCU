@@ -1,0 +1,231 @@
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playpen+Sans&family=Roboto:wght@300&display=swap');
+
+:root{
+    --white: #ffffff;
+    --primary-color : #48D1CC;
+    --text-dark: black;
+    --text-light: #338a87;    
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+.btn{
+    padding: 1rem 2rem;
+    outline: 2px white;
+    font-size: 1rem;
+    color: var(--white);
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn:hover{
+    background-color: var(--text-light);
+}
+body{
+    font-family: "PT Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+    
+}
+.container{
+    max-width: 1200px;
+    margin: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    background-color:rgba(0, 0, 0, 0.437);
+    padding: 10px 100px;
+    align-items: center;
+    position:sticky;
+    top: 0;
+    z-index: 1000;
+
+
+}
+
+.nav_logo{
+    font-family: "Playpen Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.nav_links{
+    font-family: "PT Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.link a{
+    text-decoration: none;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.link a:hover{
+    color: var(--primary-color);
+}
+
+.header{
+    padding: 0 1 rem;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    align-items: center;
+}
+
+.content h1{
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+.content h1 span{
+    font-weight: 400;
+}
+
+.content p{
+    margin-bottom: 2rem;
+    color: grey;
+    line-height: 1.75rem;
+}
+
+.image{
+    position: relative;
+    text-align: center;
+    isolation: isolate;
+}
+
+.image__bg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width: 400px;
+    background-color: var(--primary-color);
+    border-radius: 100%;
+    z-index: -1;
+}
+
+.image img{
+    width: 100%;
+    max-width: 5000px;
+    left: 60%;
+       
+}
+
+/* General Reset */
+body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: rgba(0, 0, 0, 0.43); /* Teal theme color */
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 20px;
+    min-width: 200px;
+}
+
+.footer-section h2, .footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.footer-section p, .footer-section ul {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #d9edf7;
+}
+
+.footer-section .social-icons a {
+    margin-right: 10px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+
+.footer-section .social-icons img {
+    width: 100%;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.footer-section .social-icons img:hover {
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 20px;
+    padding-top: 1px;
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-section {
+        margin-bottom: 20px;
+    }
+}
+
