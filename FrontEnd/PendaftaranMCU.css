@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-    max-width: 960px;
+    max-width: 1200px; /* Accommodates wider content */
     margin: 0 auto;
     padding: 40px;
 }
@@ -17,7 +17,7 @@ h1, h2 {
     color: #48D1CC;
 }
 
-  /* Header */
+/* Header */
 header {
     display: flex;
     flex-direction: column;
@@ -25,7 +25,7 @@ header {
     margin-bottom: 30px;
 }
 
-  /* Navigation */
+/* Navigation */
 nav {
     background-color: #48D1CC;
     padding: 10px 0;
@@ -55,7 +55,7 @@ nav a.active {
     background-color: #338a87;
 }
 
-  /* Form Styles */
+/* Form Styles */
 .form-container {
     background-color: #f8f8f8;
     padding: 30px;
@@ -92,6 +92,11 @@ nav a.active {
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #338a87;
 }
 
 .btn-detail {
@@ -101,11 +106,17 @@ nav a.active {
     padding: 6px 12px;
     border-radius: 4px;
     font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
-  /* History Table */
+.btn-detail:hover {
+    background-color: #338a87;
+}
+
+/* History Table */
 .history-container {
     margin-top: 40px;
+    overflow-x: auto; /* Horizontal scroll for smaller screens */
 }
 
 table {
@@ -117,8 +128,26 @@ th, td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 th {
     background-color: #f2f2f2;
+    color: #338a87;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin: 10px 0;
+    }
+
+    .container {
+        padding: 20px;
+    }
 }

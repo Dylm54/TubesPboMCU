@@ -1,81 +1,92 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Get form elements
-    const idPendaftaran = document.getElementById('id-pendaftaran');
-    const tanggalDaftar = document.getElementById('tanggal-daftar');
-    const paketMCU = document.getElementById('paket-mcu');
-    const status = document.getElementById('status');
-    const submitButton = document.querySelector('.btn');
 
-    // Generate auto-generated ID
-    idPendaftaran.value = 'MCU' + Math.floor(Math.random() * 1000 + 1);
+  const tanggalDaftar = document.getElementById('tanggal-daftar');
+  const nama = document.getElementById('nama');
+  const alamat = document.getElementById('alamat');
+  const noTelp = document.getElementById('no-telp');
+  const paketMCU = document.getElementById('paket-mcu');
+  const status = document.getElementById('status');
+  const submitButton = document.querySelector('.btn');
 
-    // Add event listener to form submission
-    submitButton.addEventListener('click', function(event) {
-        event.preventDefault();
+  submitButton.addEventListener('click', function(event) {
+      event.preventDefault();
 
-      // Get form data
-    const formData = {
-        id: idPendaftaran.value,
-        tanggal: tanggalDaftar.value,
-        paket: paketMCU.value,
-        status: 'Pending'
-    };
+      const formData = {
+          tanggal: tanggalDaftar.value,
+          nama: nama.value,
+          alamat: alamat.value,
+          noTelp: noTelp.value,
+          paket: paketMCU.value,
+          status: 'Pending'
+      };
 
-      // Add new record to history table
-    addToHistoryTable(formData);
+      if (!formData.nama || !formData.alamat || !formData.noTelp || !formData.tanggal) {
+          alert('Harap lengkapi semua data pendaftaran!');
+          return;
+      }
 
-      // Reset form
-    idPendaftaran.value = 'MCU' + Math.floor(Math.random() * 1000 + 1);
-    tanggalDaftar.value = '';
-    paketMCU.value = 'paket-basic';
-    status.value = 'Pending';
-    });
+      addToHistoryTable(formData);
 
-    function addToHistoryTable(data) {
-        const historyTable = document.querySelector('.history-container table tbody');
-        const newRow = document.createElement('tr');
+      tanggalDaftar.value = '';
+      nama.value = '';
+      alamat.value = '';
+      noTelp.value = '';
+      paketMCU.value = 'paket-basic';
+      status.value = 'Pending';
+  });
 
-        const idCell = document.createElement('td');
-        idCell.textContent = data.id;
+  function addToHistoryTable(data) {
+      const historyTable = document.querySelector('.history-container table tbody');
+      const newRow = document.createElement('tr');
 
-        const tanggalCell = document.createElement('td');
-        tanggalCell.textContent = data.tanggal;
+      const tanggalCell = document.createElement('td');
+      tanggalCell.textContent = data.tanggal;
 
-        const paketCell = document.createElement('td');
-        paketCell.textContent = data.paket.replace('paket-', 'Paket ');
+      const namaCell = document.createElement('td');
+      namaCell.textContent = data.nama;
 
-        const statusCell = document.createElement('td');
-        statusCell.textContent = data.status;
+      const alamatCell = document.createElement('td');
+      alamatCell.textContent = data.alamat;
 
-        const aksiCell = document.createElement('td');
-        const detailLink = document.createElement('a');
-        detailLink.href = '#';
-        detailLink.classList.add('btn-detail');
-        detailLink.textContent = 'Detail';
-        aksiCell.appendChild(detailLink);
+      const noTelpCell = document.createElement('td');
+      noTelpCell.textContent = data.noTelp;
 
-        newRow.appendChild(idCell);
-        newRow.appendChild(tanggalCell);
-        newRow.appendChild(paketCell);
-        newRow.appendChild(statusCell);
-        newRow.appendChild(aksiCell);
+      const paketCell = document.createElement('td');
+      paketCell.textContent = data.paket.replace('paket-', 'Paket ');
 
-        historyTable.appendChild(newRow);
-    }
+      const statusCell = document.createElement('td');
+      statusCell.textContent = data.status;
 
-    // Make navigation menu interactive
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(function(link) {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            navLinks.forEach(function(link) {
-                link.classList.remove('active');
-        });
-        this.classList.add('active');
-        });
-    });
+      const aksiCell = document.createElement('td');
+      const detailLink = document.createElement('a');
+      detailLink.href = '#';
+      detailLink.classList.add('btn-detail');
+      detailLink.textContent = 'Detail';
+      aksiCell.appendChild(detailLink);
 
-    // Initialize history table with empty data
-    const historyTable = document.querySelector('.history-container table tbody');
-    historyTable.innerHTML = '';
+      newRow.appendChild(tanggalCell);
+      newRow.appendChild(namaCell);
+      newRow.appendChild(alamatCell);
+      newRow.appendChild(noTelpCell);
+      newRow.appendChild(paketCell);
+      newRow.appendChild(statusCell);
+      newRow.appendChild(aksiCell);
+
+      historyTable.appendChild(newRow);
+  }
+
+  const navLinks = document.querySelectorAll('nav a');
+  navLinks.forEach(function(link) {
+      link.addEventListener('click', function(event) {
+          event.preventDefault();
+          navLinks.forEach(function(link) {
+              link.classList.remove('active');
+          });
+          this.classList.add('active');
+      });
+  });
+
+  
+  const historyTable = document.querySelector('.history-container table tbody');
+  historyTable.innerHTML = '';
 });
