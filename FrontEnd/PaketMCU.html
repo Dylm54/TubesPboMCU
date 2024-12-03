@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paket Medical Check Up</title>
+    <link rel="stylesheet" href="PaketMCU.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Paket Medical Check Up</h1>
+            <nav>
+                <ul>
+                    <li><a href="PendaftaranMCU.html">Pendaftaran MCU</a></li>
+                    <li><a href="#" class="active">Paket MCU</a></li>
+                    <li><a href="#">Data Pasien</a></li>
+                    <li><a href="#">Admin Lab</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="package-container">
+            <div class="package-filters">
+                <h2>Filter Pemeriksaan</h2>
+                <div class="filter-group">
+                    <label>
+                        <input type="checkbox" value="thorax" checked> Thorax
+                    </label>
+                    <label>
+                        <input type="checkbox" value="abdomen" checked> Abdomen
+                    </label>
+                    <label>
+                        <input type="checkbox" value="gula-darah" checked> Gula Darah
+                    </label>
+                    <label>
+                        <input type="checkbox" value="urine" checked> Urine
+                    </label>
+                    <label>
+                        <input type="checkbox" value="jantung" checked> Jantung
+                    </label>
+                </div>
+            </div>
+
+            <div class="packages-grid">
+                <div class="package-card" data-categories="thorax,gula-darah,urine">
+                    <h3>Paket Basic</h3>
+                    <div class="price">Rp 500.000</div>
+                    <ul class="examinations">
+                        <li>Thorax</li>
+                        <li>Pemeriksaan Gula Darah</li>
+                        <li>Urinalysis</li>
+                    </ul>
+                    <button class="btn-detail">Lihat Detail</button>
+                </div>
+
+                <div class="package-card" data-categories="thorax,abdomen,gula-darah,urine">
+                    <h3>Paket Premium</h3>
+                    <div class="price">Rp 1.200.000</div>
+                    <ul class="examinations">
+                        <li>Thorax</li>
+                        <li>USG Abdomen</li>
+                        <li>Pemeriksaan Gula Darah</li>
+                        <li>Urinalysis Lengkap</li>
+                    </ul>
+                    <button class="btn-detail">Lihat Detail</button>
+                </div>
+
+                <div class="package-card" data-categories="thorax,abdomen,gula-darah,urine,jantung">
+                    <h3>Paket Executive</h3>
+                    <div class="price">Rp 2.500.000</div>
+                    <ul class="examinations">
+                        <li>Thorax Digital</li>
+                        <li>USG Abdomen Full</li>
+                        <li>Pemeriksaan Gula Darah Lengkap</li>
+                        <li>Urinalysis Lengkap</li>
+                        <li>EKG Jantung</li>
+                    </ul>
+                    <button class="btn-detail">Lihat Detail</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for package details -->
+        <div id="packageModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Detail Paket MCU</h2>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+    </div>
+    <script src="PaketMCU.js"></script>
+</body>
+</html>
