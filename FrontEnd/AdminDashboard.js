@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const paketData = [];
     const pasienData = [];
+    const riwayatPendaftaran = []; 
 
     const sectionTitle = document.getElementById("section-title");
     const sections = document.querySelectorAll(".section");
@@ -17,12 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const generateLaporanBtn = document.getElementById("generate-laporan");
     const laporanListTable = document.getElementById("laporan-list").querySelector("tbody");
 
-    const cariPasienInput = document.getElementById("cari-pasien");
-    const filterPaketInput = document.getElementById("filter-paket");
-    const filterPeriodeMulaiInput = document.getElementById("filter-periode-mulai");
-    const filterPeriodeAkhirInput = document.getElementById("filter-periode-akhir");
-    const cariBtn = document.getElementById("cari-btn");
-    const pasienListTable = document.getElementById("pasien-list").querySelector("tbody");
+    const riwayatPendaftaranTable = document.getElementById("riwayat-pendaftaran").querySelector("tbody");
 
     function clearTable(tableBody) {
         tableBody.innerHTML = "";
@@ -54,32 +50,27 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    function renderLaporanList(filteredData) {
-        clearTable(laporanListTable);
-        filteredData.forEach(item => {
+    function renderRiwayatPendaftaran() {
+        clearTable(riwayatPendaftaranTable);
+
+        riwayatPendaftaran.forEach(item => {
             const row = document.createElement("tr");
             row.innerHTML = `
-                <td>${item.periode}</td>
+                <td>${item.tanggal}</td>
+                <td>${item.nama}</td>
+                <td>${item.alamat}</td>
+                <td>${item.noTelepon}</td>
                 <td>${item.paket}</td>
-                <td>${item.pasien}</td>
-                <td>${item.total}</td>
+                <td>${item.status}</td>
             `;
-            laporanListTable.appendChild(row);
+            riwayatPendaftaranTable.appendChild(row);
         });
     }
 
-    function renderPasienList(filteredData) {
-        clearTable(pasienListTable);
-        filteredData.forEach(item => {
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>${item.nama}</td>
-                <td>${item.noIdentitas}</td>
-                <td>${item.paket}</td>
-                <td>${item.tanggal}</td>
-            `;
-            pasienListTable.appendChild(row);
-        });
+    function tambahRiwayatPendaftaran(nama, alamat, noTelepon, paket, status) {
+        const tanggal = new Date().toLocaleDateString();
+        riwayatPendaftaran.push({ tanggal, nama, alamat, noTelepon, paket, status });
+        renderRiwayatPendaftaran();
     }
 
     tambahPaketBtn.addEventListener("click", () => {
@@ -115,26 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         renderLaporanList(filteredData);
-    });
-
-    cariBtn.addEventListener("click", () => {
-        const nama = cariPasienInput.value.trim();
-        const paket = filterPaketInput.value;
-        const periodeMulai = filterPeriodeMulaiInput.value;
-        const periodeAkhir = filterPeriodeAkhirInput.value;
-
-        const filteredData = pasienData.filter(pasien => {
-            const matchNama = !nama || pasien.nama.toLowerCase().includes(nama.toLowerCase());
-            const matchPaket = !paket || pasien.paket === paket;
-            const tanggal = new Date(pasien.tanggal);
-            const matchPeriode =
-                (!periodeMulai || tanggal >= new Date(periodeMulai)) &&
-                (!periodeAkhir || tanggal <= new Date(periodeAkhir));
-
-            return matchNama && matchPaket && matchPeriode;
-        });
-
-        renderPasienList(filteredData);
     });
 
     navItems.forEach(item => {
@@ -176,3 +147,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 });
+
