@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard MCU Rumah Sakit</title>
+    <title>Dashboard MCU Admin</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="AdminDashboard.css">
 </head>
@@ -11,8 +11,8 @@
     <div class="dashboard-container">
         <aside class="sidebar">
             <div class="logo">
-                <img src="/api/placeholder/100/100" alt="Logo Rumah Sakit">
-                <h2>RS Sehat</h2>
+                <img src="/FrontEnd/Foto/Logorumahsakit.png" alt="Logo Rumah Sakit">
+                <h2>RUMAH SAKIT PBO</h2>
             </div>
             <nav>
                 <ul>
@@ -22,7 +22,7 @@
                     </li>
                     <li class="nav-item" data-section="pendaftaran">
                         <i class="fas fa-user-plus"></i>
-                        <span>Pendaftaran Pasien</span>
+                        <span>Riwayat Pendaftaran MCU</span>
                     </li>
                     <li class="nav-item" data-section="laporan">
                         <i class="fas fa-chart-line"></i>
@@ -43,14 +43,13 @@
                 </div>
                 <div class="header-right">
                     <div class="user-info">
-                        <img src="/api/placeholder/50/50" alt="Admin">
+                        <img src="/FrontEnd/Foto/IMG4.png" alt="Admin">
                         <span>Administrator</span>
                     </div>
                 </div>
             </header>
 
             <div class="content-sections">
-                <!-- Paket MCU Section -->
                 <section id="paket-mcu" class="section active">
                     <div class="card">
                         <div class="card-header">
@@ -87,7 +86,6 @@
                     </div>
                 </section>
 
-                <!-- Patient Registration Section -->
                 <section id="pendaftaran" class="section">
                     <div class="card">
                         <div class="card-header">
@@ -102,7 +100,6 @@
                                 <input type="text" id="pasien-nama" placeholder="Nama Pasien" required>
                                 <input type="text" id="pasien-no-identitas" placeholder="Nomor Identitas" required>
                                 <select id="paket-dipilih" multiple required>
-                                    <!-- Paket options will be dynamically populated -->
                                 </select>
                                 <button id="daftar-pasien" class="btn-success">
                                     <i class="fas fa-save"></i> Daftar
@@ -112,7 +109,6 @@
                     </div>
                 </section>
 
-                <!-- Income Report Section -->
                 <section id="laporan" class="section">
                     <div class="card">
                         <div class="card-header">
@@ -149,7 +145,6 @@
                     </div>
                 </section>
 
-                <!-- Patient Search Section -->
                 <section id="pencarian" class="section">
                     <div class="card">
                         <div class="card-header">
