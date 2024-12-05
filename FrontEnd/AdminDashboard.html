@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard MCU Rumah Sakit</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="AdminDashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="/api/placeholder/100/100" alt="Logo Rumah Sakit">
+                <h2>RS Sehat</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li class="nav-item active" data-section="paket-mcu">
+                        <i class="fas fa-notes-medical"></i>
+                        <span>Kelola Paket MCU</span>
+                    </li>
+                    <li class="nav-item" data-section="pendaftaran">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Pendaftaran Pasien</span>
+                    </li>
+                    <li class="nav-item" data-section="laporan">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Laporan Pemasukan</span>
+                    </li>
+                    <li class="nav-item" data-section="pencarian">
+                        <i class="fas fa-search"></i>
+                        <span>Pencarian Pasien</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div class="header-left">
+                    <h1 id="section-title">Kelola Paket MCU</h1>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <img src="/api/placeholder/50/50" alt="Admin">
+                        <span>Administrator</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-sections">
+                <!-- Paket MCU Section -->
+                <section id="paket-mcu" class="section active">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Tambah Paket Baru</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <input type="text" id="paket-nama" placeholder="Nama Paket" required>
+                                <select id="paket-jenis" required>
+                                    <option value="">Pilih Jenis Pemeriksaan</option>
+                                    <option value="thorax">Thorax</option>
+                                    <option value="abdomen">Abdomen</option>
+                                    <option value="gula-darah">Gula Darah</option>
+                                </select>
+                                <input type="number" id="paket-harga" placeholder="Harga Paket" required>
+                                <button id="tambah-paket" class="btn-primary">
+                                    <i class="fas fa-plus"></i> Tambah
+                                </button>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="paket-list">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama Paket</th>
+                                            <th>Jenis</th>
+                                            <th>Harga</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Patient Registration Section -->
+                <section id="pendaftaran" class="section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Registrasi Pasien Baru</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <select id="pasien-status">
+                                    <option value="baru">Pasien Baru</option>
+                                    <option value="lama">Pasien Lama</option>
+                                </select>
+                                <input type="text" id="pasien-nama" placeholder="Nama Pasien" required>
+                                <input type="text" id="pasien-no-identitas" placeholder="Nomor Identitas" required>
+                                <select id="paket-dipilih" multiple required>
+                                    <!-- Paket options will be dynamically populated -->
+                                </select>
+                                <button id="daftar-pasien" class="btn-success">
+                                    <i class="fas fa-save"></i> Daftar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Income Report Section -->
+                <section id="laporan" class="section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Laporan Pemasukan</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="date-input">
+                                    <label>Dari Tanggal:</label>
+                                    <input type="date" id="laporan-dari">
+                                </div>
+                                <div class="date-input">
+                                    <label>Sampai Tanggal:</label>
+                                    <input type="date" id="laporan-sampai">
+                                </div>
+                                <button id="generate-laporan" class="btn-primary">
+                                    <i class="fas fa-chart-bar"></i> Generate
+                                </button>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="laporan-list">
+                                    <thead>
+                                        <tr>
+                                            <th>Periode</th>
+                                            <th>Paket</th>
+                                            <th>Pasien</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Patient Search Section -->
+                <section id="pencarian" class="section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Pencarian Pasien</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <input type="text" id="cari-pasien" placeholder="Nama Pasien">
+                                <select id="filter-paket">
+                                    <option value="">Pilih Paket</option>
+                                </select>
+                                <input type="date" id="filter-periode-mulai" placeholder="Periode Mulai">
+                                <input type="date" id="filter-periode-akhir" placeholder="Periode Akhir">
+                                <button id="cari-btn" class="btn-primary">
+                                    <i class="fas fa-search"></i> Cari
+                                </button>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="pasien-list">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama</th>
+                                            <th>No. Identitas</th>
+                                            <th>Paket</th>
+                                            <th>Tanggal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="AdminDashboard.js"></script>
+</body>
+</html>
