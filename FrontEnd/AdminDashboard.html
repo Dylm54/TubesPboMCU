@@ -20,8 +20,8 @@
                         <i class="fas fa-notes-medical"></i>
                         <span>Kelola Paket MCU</span>
                     </li>
-                    <li class="nav-item" data-section="pendaftaran">
-                        <i class="fas fa-user-plus"></i>
+                    <li class="nav-item" data-section="riwayat-pendaftaran">
+                        <i class="fas fa-user-check"></i>
                         <span>Riwayat Pendaftaran MCU</span>
                     </li>
                     <li class="nav-item" data-section="laporan">
@@ -86,26 +86,22 @@
                     </div>
                 </section>
 
-                <section id="pendaftaran" class="section">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>Registrasi Pasien Baru</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-row">
-                                <select id="pasien-status">
-                                    <option value="baru">Pasien Baru</option>
-                                    <option value="lama">Pasien Lama</option>
-                                </select>
-                                <input type="text" id="pasien-nama" placeholder="Nama Pasien" required>
-                                <input type="text" id="pasien-no-identitas" placeholder="Nomor Identitas" required>
-                                <select id="paket-dipilih" multiple required>
-                                </select>
-                                <button id="daftar-pasien" class="btn-success">
-                                    <i class="fas fa-save"></i> Daftar
-                                </button>
-                            </div>
-                        </div>
+                <section id="riwayat-pendaftaran" class="section">
+                    <div class="history-container">
+                        <h2>Riwayat Pendaftaran MCU</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Nama</th>
+                                    <th>Alamat</th>
+                                    <th>No Telepon</th>
+                                    <th>Paket MCU</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
                     </div>
                 </section>
 
