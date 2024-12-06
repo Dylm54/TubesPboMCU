@@ -108,6 +108,24 @@ document.addEventListener("DOMContentLoaded", () => {
         renderLaporanList(filteredData);
     });
 
+    function renderLaporanList(filteredData) {
+        clearTable(laporanListTable);
+        let totalHarga = 0;
+    
+        filteredData.forEach(item => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${item.paket}</td>
+                <td>${item.pasien}</td>
+                <td>${item.harga}</td>
+            `;
+            laporanListTable.appendChild(row);
+            totalHarga += item.harga; 
+        });
+    
+        document.getElementById("total-harga").textContent = totalHarga; 
+    }
+
     navItems.forEach(item => {
         item.addEventListener("click", () => {
             const sectionId = item.getAttribute("data-section");
