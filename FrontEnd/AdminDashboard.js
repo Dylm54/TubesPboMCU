@@ -159,6 +159,10 @@ const paketJenisEdit = document.getElementById('paket-jenis-edit');
 const paketHargaEdit = document.getElementById('paket-harga-edit');
 const paketDeskripsiEdit = document.getElementById('paket-deskripsi-edit');
 const editForm = document.getElementById('editForm');
+const btnGenerate = document.getElementById('generate-laporan');
+const inputLaporanDari = document.getElementById('laporan-dari');
+const inputLaporanSampai = document.getElementById('laporan-sampai');
+const totalHarga = document.getElementById('total-harga');
 const apiUrl = 'http://localhost:8080';
 
 navItems.forEach(item => {
@@ -241,6 +245,21 @@ function formattingDate(unformattedDate) {
 
     return `${day}-${month}-${year}`;
 
+}
+
+function populateLaporanTable(laporanList) {
+    const tableBody = document.querySelector('#laporan-list tbody');
+    tableBody.innerHTML = '';
+
+    laporanList.forEach(laporan => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td>${laporan.namaPaket}</td>
+        <td>${formattingDate(laporan.tanggal)}</td>
+        <td>${laporan.harga}</td>
+    `;
+        tableBody.appendChild(row);
+    });
 }
 
 function populatePaketTable(paketList) {
@@ -387,6 +406,22 @@ editForm.addEventListener('submit', async function (event) {
         console.error('There was a problem with the update operation:', error);
     }
 });
+
+btnGenerate.addEventListener('click', async function (event) {
+    event.preventDefault();
+
+    const tanggalDari = inputLaporanDari.value;
+    const tanggalSampai = inputLaporanSampai.value;
+
+    const response = await fetch(`${apiUrl}/api/admin/laporanPemasukan?startDate=${tanggalDari}&endDate=${tanggalSampai}`);
+        if (!response.ok) {
+            throw new Error('Network response paket was not ok ' + response.statusText);
+        }
+        const data = await response.json();
+        console.log(data)
+        populateLaporanTable(data.detail)
+        totalHarga.innerHTML = data.total
+})
 
 
 document.addEventListener('DOMContentLoaded', fetchPaketData);
