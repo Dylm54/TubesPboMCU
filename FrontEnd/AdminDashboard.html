@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="AdminDashboard.css">
 </head>
+
 <body>
     <div class="dashboard-container">
         <aside class="sidebar">
@@ -50,6 +52,20 @@
             </header>
 
             <div class="content-sections">
+                <div id="editModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close-button" id="closeModal">&times;</span>
+                        <h2>Edit Paket</h2>
+                        <form id="editForm" style="display: flex; flex-direction: column; gap: 20px; margin-top: 30px;">
+                            <input type="hidden" id="itemId" name="itemId">
+                            <input type="text" id="paket-nama-edit" placeholder="Nama Paket" required>
+                            <input type="text" id="paket-jenis-edit" placeholder="Jenis Paket" required>
+                            <input type="text" id="paket-deskripsi-edit" placeholder="Deskripsi Paket" required>
+                            <input type="number" id="paket-harga-edit" placeholder="Harga Paket" required>
+                            <button type="submit" class="btn-primary" style="margin: auto;">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
                 <section id="paket-mcu" class="section active">
                     <div class="card">
                         <div class="card-header">
@@ -58,12 +74,8 @@
                         <div class="card-body">
                             <div class="form-row">
                                 <input type="text" id="paket-nama" placeholder="Nama Paket" required>
-                                <select id="paket-jenis" required>
-                                    <option value="">Pilih Jenis Pemeriksaan</option>
-                                    <option value="thorax">Thorax</option>
-                                    <option value="abdomen">Abdomen</option>
-                                    <option value="gula-darah">Gula Darah</option>
-                                </select>
+                                <input type="text" id="paket-jenis" placeholder="Jenis Paket" required>
+                                <input type="text" id="paket-deskripsi" placeholder="Deskripsi Paket" required>
                                 <input type="number" id="paket-harga" placeholder="Harga Paket" required>
                                 <button id="tambah-paket" class="btn-primary">
                                     <i class="fas fa-plus"></i> Tambah
@@ -73,8 +85,10 @@
                                 <table id="paket-list">
                                     <thead>
                                         <tr>
+                                            <th>Id</th>
                                             <th>Nama Paket</th>
                                             <th>Jenis</th>
+                                            <th>Dekripsi</th>
                                             <th>Harga</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -89,15 +103,13 @@
                 <section id="riwayat-pendaftaran" class="section">
                     <div class="history-container">
                         <h2>Riwayat Pendaftaran MCU</h2>
-                        <table>
+                        <table id="pendaftaran-list">
                             <thead>
                                 <tr>
                                     <th>Tanggal</th>
-                                    <th>Nama</th>
-                                    <th>Alamat</th>
-                                    <th>No Telepon</th>
-                                    <th>Paket MCU</th>
-                                    <th>Status</th>
+                                    <th>Paket</th>
+                                    <th>Jenis</th>
+                                    <th>Harga</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -180,4 +192,5 @@
 
     <script src="AdminDashboard.js"></script>
 </body>
+
 </html>

@@ -11,6 +11,7 @@ public class PaketMCU {
     @Id
     private String idPaket;
     private String namaPaket;
+    private String deskripsiPaket;
     private String jenisPemeriksaan;
     private double harga;
     

@@ -3,6 +3,7 @@ package com.mcu.web.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mcu.web.models.PaketMCU;
 import com.mcu.web.models.PendaftaranMCU;
 import com.mcu.web.models.SumberPemasukan;
 import com.mcu.web.repositories.PendaftaranMCURepository;
@@ -28,6 +29,10 @@ public class PendaftaranMCUService {
                         pendaftaran.getPaket().getHarga()
                 ))
                 .collect(Collectors.toList());
+    }
+
+    public List<PendaftaranMCU> getAllRiwayatPendaftaran() {
+        return repository.findAll();
     }
 
 }

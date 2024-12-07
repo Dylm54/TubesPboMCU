@@ -31,8 +31,8 @@ public class PasienService {
 
         if (existingPasien.isPresent()) {
             // Jika pasien sudah ada, throw exception
-            throw new IllegalArgumentException(
-                    "Pasien dengan nomor telepon " + pasien.getNoTelp() + " sudah terdaftar.");
+            Pasien oldPasien = existingPasien.get();
+            return oldPasien;
         }
 
         // Simpan pasien jika belum ada
