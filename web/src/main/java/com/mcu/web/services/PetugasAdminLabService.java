@@ -60,6 +60,10 @@ public class PetugasAdminLabService {
         }
     }
 
+    public PaketMCU getPaketMCUById(String id) {
+        return paketMCURepository.findById(id).orElse(null);
+    }
+
     public List<Pasien> cariPasienByNama(String nama) {
         return pasienRepository.findByNamaContainingIgnoreCase(nama);
     }

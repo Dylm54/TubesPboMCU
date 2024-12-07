@@ -14,7 +14,6 @@ public class PendaftaranMCU {
     @Id
     private String idPendaftaran;
     private Date tanggalDaftar;
-    private String status;
     @DBRef
     @JsonIgnore
     private Pasien pasien;
@@ -23,7 +22,6 @@ public class PendaftaranMCU {
     public PendaftaranMCU(String id, Date tanggal, String status, Pasien pasien, PaketMCU paket) {
         this.idPendaftaran = id;
         this.tanggalDaftar = tanggal;
-        this.status = status;
         this.pasien = pasien;
         this.paket = paket;
     }

@@ -19,6 +19,7 @@ import com.mcu.web.models.PetugasAdminLab;
 import com.mcu.web.models.SumberPemasukan;
 import com.mcu.web.models.PaketMCU;
 import com.mcu.web.models.Pasien;
+import com.mcu.web.models.PendaftaranMCU;
 import com.mcu.web.services.PendaftaranMCUService;
 import com.mcu.web.services.PetugasAdminLabService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,8 +28,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/admin")
 public class PetugasAdminLabController {
     @Autowired
@@ -113,5 +116,20 @@ public class PetugasAdminLabController {
     @GetMapping("/findAllPaket")
     public List<PaketMCU> getAllPaket() {
         return adminService.getAllPaket();
+    }
+
+    @GetMapping("/findAllPendaftaran")
+    public List<PendaftaranMCU> getAllPendaftaran() {
+        return pendaftaranService.getAllRiwayatPendaftaran();
+    }
+
+    @GetMapping("findPaketbyId/{id}")
+    public ResponseEntity<PaketMCU> getPaketMCUById(@PathVariable String id) {
+        PaketMCU paket = adminService.getPaketMCUById(id);
+        if (paket != null) {
+            return ResponseEntity.ok(paket);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
