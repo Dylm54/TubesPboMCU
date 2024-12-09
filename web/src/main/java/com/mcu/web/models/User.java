@@ -25,14 +25,19 @@ public class User {
     @JsonProperty("noTelp")
     private String noTelp;
 
+    @JsonProperty("password")
+    private String password;
+
     @JsonCreator
     public User(@JsonProperty("id") String id,
                 @JsonProperty("nama") String nama,
                 @JsonProperty("alamat") String alamat,
+                @JsonProperty("password") String password,
                 @JsonProperty("noTelp") String noTelp) {
         this.id = id;
         this.nama = nama;
         this.alamat = alamat;
         this.noTelp = noTelp;
+        this.password = password;
     }
 }   

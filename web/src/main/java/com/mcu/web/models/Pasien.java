@@ -7,8 +7,8 @@ import lombok.*;
 public class Pasien extends User{
     private List<PendaftaranMCU> riwayatPendaftaran = new ArrayList<PendaftaranMCU>();
     
-    public Pasien(String id, String nama, String alamat, String noTelp) {
-        super(id, nama, alamat, noTelp);
+    public Pasien(String id, String nama, String alamat, String noTelp, String password) {
+        super(id, nama, alamat, noTelp, password);
         
     }
 

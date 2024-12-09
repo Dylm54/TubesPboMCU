@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Login.css">
-    <title>Login Pasien</title>
+    <title>Login Admin</title>
 </head>
 
 <body>
@@ -14,19 +14,22 @@
         <div class="form-container sign-up">
             <form>
                 <h1>Create Account</h1>
-                <input type="text" id="registerNamaUser" placeholder="Name" required>
-                <input type="text" id="registerHandphoneUser" placeholder="Handphone" required>
-                <input type="text" id="registerAlamatUser" placeholder="Alamat" required>
-                <input type="password" id="registerPasswordUser" placeholder="Password" required>
-                <button id="submitRegisterUser">Sign Up</button>
+                <p>for Admin</p>
+                <input type="text" id="registerNamaAdmin" placeholder="Name" required>
+                <input type="text" id="registerHandphoneAdmin" placeholder="Handphone" required>
+                <input type="text" id="registerAlamatAdmin" placeholder="Alamat" required>
+                <input type="text" id="registerJabatanAdmin" placeholder="Jabatan" required>
+                <input type="password" id="registerPasswordAdmin" placeholder="Password" required>
+                <button id="submitRegisterAdmin">Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in">
             <form>
                 <h1>Sign In</h1>
-                <input type="text" id="loginHandphoneUser" placeholder="Handphone" required>
-                <input type="password" id="loginPasswordUser" placeholder="Password" required>
-                <button id="submitLoginUser">Sign In</button>
+                <p>for Admin</p>
+                <input type="text" id="loginHandphoneAdmin" placeholder="Handphone" required>
+                <input type="password" id="loginPasswordAdmin" placeholder="Password" required>
+                <button id="submitLoginAdmin">Sign In</button>
             </form>
         </div>
         <div class="toggle-container">
@@ -45,7 +48,7 @@
         </div>
     </div>
 
-    <script src="Login.js"></script>
+    <script src="LoginAdmin.js"></script>
 </body>
 
 </html>
