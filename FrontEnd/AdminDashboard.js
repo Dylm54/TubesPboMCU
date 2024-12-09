@@ -190,7 +190,7 @@ async function fetchPaketData() {
 
         const response2 = await fetch(`${apiUrl}/api/admin/findAllPendaftaran`);
         if (!response2.ok) {
-            throw new Error('Network response pendaftaran was not ok ' + response.statusText);
+            throw new Error('Network response pendaftaran was not ok ' + response2.statusText);
         }
         const data2 = await response2.json();
         console.log(data2)
