@@ -163,6 +163,9 @@ const btnGenerate = document.getElementById('generate-laporan');
 const inputLaporanDari = document.getElementById('laporan-dari');
 const inputLaporanSampai = document.getElementById('laporan-sampai');
 const totalHarga = document.getElementById('total-harga');
+const dropdownIndicator = document.querySelector('.dropdown-indicator');
+const dropdown = document.querySelector('.nav-item.dropdown');
+const dropdownMenu = dropdown.querySelector('.dropdown-menu');
 const apiUrl = 'http://localhost:8080';
 
 navItems.forEach(item => {
@@ -176,6 +179,17 @@ navItems.forEach(item => {
         document.getElementById(sectionId).classList.add("active");
         item.classList.add("active");
     });
+});
+
+dropdownIndicator.addEventListener('click', (event) => {
+    event.stopPropagation(); 
+    dropdown.classList.toggle('active'); 
+});
+
+document.addEventListener('click', (event) => {
+    if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove('active'); 
+    }
 });
 
 async function fetchPaketData() {
