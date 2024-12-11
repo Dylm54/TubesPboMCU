@@ -263,6 +263,65 @@ table tr:hover {
     cursor: pointer;
 }
 
+/* Styling untuk dropdown */
+.nav-item.dropdown {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.nav-item .dropdown-indicator {
+    margin-left: 8px; 
+    font-size: 12px; 
+    transition: transform 0.3s ease; 
+}
+
+/* Styling dropdown menu */
+.nav-item .dropdown-menu {
+    display: none; 
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 100;
+}
+
+.nav-item .dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item .dropdown-menu li {
+    padding: 10px;
+    font-size: 14px;
+}
+
+.nav-item .dropdown-menu li a {
+    color: var(--text-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-item .dropdown-menu li:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.nav-item.active .dropdown-menu {
+    display: block;
+}
+
+.nav-item.active .dropdown-indicator {
+    transform: rotate(180deg); 
+}
+
 
 @media (max-width: 768px) {
     .dashboard-container {
