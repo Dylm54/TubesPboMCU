@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playpen+Sans&family=Roboto:wght@300&display=swap');
 
-:root{
+:root {
     --white: #ffffff;
-    --primary-color : #48D1CC;
+    --primary-color: #48D1CC;
     --text-dark: black;
     --text-light: #338a87;
-    --dark-green:  #194948;
+    --dark-green: #194948;
 }
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -16,7 +16,13 @@
     list-style: none;
 }
 
-nav{
+body {
+    font-family: "PT Serif", serif;
+    background-color: #f9f9f9;
+    color: var(--text-dark);
+}
+
+nav {
     top: 0;
     width: 100%;
     padding: 20px 50px;
@@ -28,7 +34,7 @@ nav{
     position: sticky;
 }
 
-.nav_logo{
+.nav_logo {
     font-family: "Playpen Sans", serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -39,35 +45,41 @@ nav{
     user-select: none;
 }
 
-.nav_links{
+.nav_links {
     font-family: "PT Serif", serif;
     font-weight: 400;
     font-size: 1.25rem;
     color: var(--white);
     font-style: normal;
-    list-style: none;
     display: flex;
     align-items: center;
     gap: 2rem;
-    
 }
 
 .nav_links a {
     color: var(--white);
+    transition: color 0.3s ease;
 }
 
-.nav_links a:hover{
-    text-decoration-line: none;
-    color:rgb(162, 162, 162);
+.nav_links a:hover {
+    color: rgb(162, 162, 162);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
 .carousel {
     position: relative;
-    width: 80%;
-    max-width: 600px;
+    width: 90%;
+    max-width: 1000px;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
 }
 
 .carousel-inner {
@@ -77,12 +89,11 @@ nav{
 
 .carousel-item {
     min-width: 100%;
-}
-
-.carousel-item img {
-    display: block;
-    width: 100%;
-    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
 }
 
 .carousel-control {
@@ -95,6 +106,8 @@ nav{
     padding: 10px;
     cursor: pointer;
     z-index: 1000;
+    font-size: 1.5em;
+    transition: background-color 0.3s ease;
 }
 
 .carousel-control.prev {
@@ -107,4 +120,76 @@ nav{
 
 .carousel-control:hover {
     background-color: rgba(0, 0, 0, 0.8);
+}
+.category-card {
+    width: 180px;
+    height: 180px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+.category-card img {
+    max-width: 80px;
+    max-height: 80px;
+    margin-bottom: 10px;
+}
+
+.dots-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.dot.active {
+    background-color: var(--primary-color);
+}
+
+.horizontal-scroll {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap; /* Mencegah item turun ke baris berikutnya */
+    width: 80%; /* Atau tetapkan ukuran tetap, misal 600px */
+    max-width: 800px; /* Membatasi ukuran maksimal */
+    min-width: 400px; /* Membatasi ukuran minimal */
+    margin: auto; /* Agar berada di tengah secara horizontal */
+    padding: 10px;
+    gap: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px; /* Tambahkan gaya sudut */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+}
+
+.scroll-item {
+    flex: 0 0 auto; /* Mencegah item menyusut */
+    width: 150px;
+    height: 100px;
+    background-color: #48D1CC;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem;
 }
