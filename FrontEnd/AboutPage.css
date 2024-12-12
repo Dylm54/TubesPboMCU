@@ -108,19 +108,6 @@ nav{
     color:rgb(162, 162, 162);
 }
 
-
-
-/* .link a{
-    text-decoration: none;
-    color: var(--white);
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.link a:hover{
-    color: var(--primary-color);
-} */
-
 .header{
     padding: 0 1 rem;
     flex: 1;
