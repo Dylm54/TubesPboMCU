@@ -1,7 +1,15 @@
+:root{
+    --white: #ffffff;
+    --primary-color : #48D1CC;
+    --text-dark: black;
+    --text-light: #338a87;
+    --dark-green:  #194948;
+}
+
 body {
     font-family: 'PT Serif', serif;
-    background-color: #ffffff;
-    color: #338A87;
+    background-color: var(--white);
+    color: var(--text-light);
     margin: 0;
     padding: 0;
 }
@@ -13,7 +21,7 @@ body {
 }
 
 h1, h2 {
-    color: #48D1CC;
+    color: var(--dark-green);
 }
 
 header {
@@ -24,7 +32,7 @@ header {
 }
 
 nav {
-    background-color: #48D1CC;
+    background-color: var(--primary-color);
     padding: 10px 0;
     width: 100%;
 }
@@ -41,7 +49,7 @@ nav li {
 }
 
 nav a {
-    color: #ffffff;
+    color: var(--white);
     text-decoration: none;
     font-weight: 500;
     padding: 10px;
@@ -49,7 +57,7 @@ nav a {
 }
 
 nav a.active {
-    background-color: #338a87;
+    background-color: var(--text-light);
 }
 
 .form-container {
