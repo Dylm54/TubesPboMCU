@@ -4,7 +4,7 @@ const nextButton = document.querySelector('.carousel-control.next');
 const dotsContainer = document.querySelector('.dots-container');
 
 const categories = [
-    { src: '/FrontEnd/Foto/hematologi.png', alt: 'Hematologi', text: 'HEMATOLOGI' },
+    { src: '/FrontEnd/Foto/hematologi.png', alt: 'Hematologi', text: 'HEMATOLOGI', },
     { src: '/FrontEnd/Foto/urine.png', alt: 'Urine', text: 'URINE' },
     { src: '/FrontEnd/Foto/feces.png', alt: 'Feces', text: 'FAECES' },
     { src: '/FrontEnd/Foto/cairan-tubuh.png', alt: 'Cairan Tubuh', text: 'CAIRAN TUBUH' },
@@ -16,7 +16,7 @@ const categories = [
     { src: '/FrontEnd/Foto/lemak-darah.png', alt: 'Lemak Darah', text: 'LEMAK DARAH' },
     { src: '/FrontEnd/Foto/glukosa-darah.png', alt: 'Glukosa Darah', text: 'GLUKOSA DARAH' },
     { src: '/FrontEnd/Foto/elektrolit.png', alt: 'Elektrolit', text: 'ELEKTROLITE & TRACE ELEMENT' },
-     { src: '/FrontEnd/Foto/vitamin.png', alt: 'Vitamin', text: 'VITAMIN' },
+    { src: '/FrontEnd/Foto/vitamin.png', alt: 'Vitamin', text: 'VITAMIN' },
     { src: '/FrontEnd/Foto/hepatitis.png', alt: 'Hepatitis', text: 'HEPATITIS' },
     { src: '/FrontEnd/Foto/torch.png', alt: 'Torch & STD', text: 'TORCH & STD' },
     { src: '/FrontEnd/Foto/covid.png', alt: 'Covid-19', text: 'COVID-19' },
@@ -28,10 +28,10 @@ const categories = [
     { src: '/FrontEnd/Foto/alergi.png', alt: 'Alergi', text: 'ALERGI' },
     { src: '/FrontEnd/Foto/drug-abuse.png', alt: 'Drug Abuse', text: 'DRUG ABUSE/NAPZA' },
     { src: '/FrontEnd/Foto/mikrobiologi.png', alt: 'Mikrobiologi', text: 'MIKROBIOLOGI' },
-     { src: '/FrontEnd/Foto/molekular-diagnostik.png', alt: 'Molekular Diagnostik', text: 'MOLEKULAR DIAGNOSTIK' },
+    { src: '/FrontEnd/Foto/molekular-diagnostik.png', alt: 'Molekular Diagnostik', text: 'MOLEKULAR DIAGNOSTIK' },
     { src: '/FrontEnd/Foto/patologi-anatomi.png', alt: 'Patologi Anatomi', text: 'PATHOLOGI ANATOMI' },
     { src: '/FrontEnd/Foto/elektrodiagnostik.png', alt: 'Elektrodiagnostik', text: 'ELEKTRODIAGNOSTIK' },
-     { src: '/FrontEnd/Foto/usg.png', alt: 'USG', text: 'USG' },
+    { src: '/FrontEnd/Foto/usg.png', alt: 'USG', text: 'USG' },
     { src: '/FrontEnd/Foto/rontgen-kepala.png', alt: 'Rontgen Kepala & Leher', text: 'RONTGEN KEPALA & LEHER' },
     { src: '/FrontEnd/Foto/rontgen-gigi.png', alt: 'Rontgen Gigi', text: 'RONTGEN GIGI' },
     { src: '/FrontEnd/Foto/rontgen-anggota-gerak.png', alt: 'Rontgen Anggota Gerak', text: 'RONTGEN ANGGOTA GERAK' },
