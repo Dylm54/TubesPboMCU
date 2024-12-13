@@ -34,6 +34,13 @@
                         <i class="fas fa-search"></i>
                         <span>Pencarian Pasien</span>
                     </li>
+                    <li class="nav-item">
+                        <select id="search-type-sidebar">
+                            <option value="nama">Pencarian berdasarkan Nama</option>
+                            <option value="paket">Pencarian berdasarkan Paket</option>
+                            <option value="periode">Pencarian berdasarkan Periode</option>
+                        </select>
+                    </li>
                 </ul>
             </nav>
         </aside>
@@ -49,7 +56,7 @@
                         <div class="user-info">
                             <div class="nav-item dropdown">
                                 <span>Administrator</span>
-                                <span class="dropdown-indicator">▼</span> 
+                                <span class="dropdown-indicator">▼</span>
                                 <div class="dropdown-menu">
                                     <ul>
                                         <li><i class="fas fa-user"></i> Gemini Baik</li>
@@ -78,6 +85,7 @@
                         </form>
                     </div>
                 </div>
+
                 <section id="paket-mcu" class="section active">
                     <div class="card">
                         <div class="card-header">
@@ -173,13 +181,13 @@
                             <h3>Pencarian Pasien</h3>
                         </div>
                         <div class="card-body">
-                            <div class="form-row">
-                                <input type="text" id="cari-pasien" placeholder="Nama Pasien">
-                                <select id="filter-paket">
+                            <div class="form-row" id="search-fields">
+                                <input type="text" id="cari-nama" placeholder="Nama Pasien" style="display:block;">
+                                <select id="filter-paket" style="display:none;">
                                     <option value="">Pilih Paket</option>
                                 </select>
-                                <input type="date" id="filter-periode-mulai" placeholder="Periode Mulai">
-                                <input type="date" id="filter-periode-akhir" placeholder="Periode Akhir">
+                                <input type="date" id="filter-periode-mulai" style="display:none;">
+                                <input type="date" id="filter-periode-akhir" style="display:none;">
                                 <button id="cari-btn" class="btn-primary">
                                     <i class="fas fa-search"></i> Cari
                                 </button>
@@ -192,6 +200,8 @@
                                             <th>No. Identitas</th>
                                             <th>Paket</th>
                                             <th>Tanggal</th>
+                                            <th>Alamat</th>
+                                            <th>No. Telepon</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
