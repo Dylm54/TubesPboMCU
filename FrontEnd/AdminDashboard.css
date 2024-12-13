@@ -40,10 +40,9 @@ body {
 
 .logo img {
     width: 150px;
-    height: 100px;
+    height: auto;
     border-radius: 50%;
 }
-
 
 .logo h2 {
     margin-top: 10px;
@@ -67,6 +66,14 @@ body {
     font-size: 18px;
 }
 
+.nav-item select {
+    margin-left: 15px;
+    flex-grow: 1;
+    padding: 5px;
+    border-radius: 4px;
+    border: none;
+}
+
 .main-content {
     flex-grow: 1;
     background-color: var(--background-color);
@@ -88,6 +95,7 @@ header {
 .user-info {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .user-info img {
@@ -95,6 +103,37 @@ header {
     height: 40px;
     border-radius: 50%;
     margin-right: 10px;
+}
+
+.user-info .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: var(--card-bg);
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.user-info:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+    font-size: 14px;
+}
+
+.dropdown-menu li:hover {
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .section {
@@ -125,6 +164,7 @@ header {
 
 .form-row {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
 }
@@ -135,13 +175,7 @@ header {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-}
-
-input {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    min-width: 150px;
 }
 
 .btn-primary, .btn-success {
@@ -154,6 +188,7 @@ input {
     display: flex;
     align-items: center;
     gap: 8px;
+    justify-content: center;
 }
 
 .btn-success {
@@ -187,68 +222,28 @@ table tr:hover {
     background-color: #f0f0f0;
 }
 
-.history-container {
-    margin-top: 20px;
-    background-color: var(--card-bg);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.history-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: var(--primary-color);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table th, table td {
-    border: 1px solid #e0e0e0;
-    padding: 12px;
-    text-align: left;
-}
-
-table thead {
-    background-color: #f8f9fa;
-}
-
-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-table tr:hover {
-    background-color: #f0f0f0;
-}
-
-/* Modal Background */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5); 
 }
 
-/* Modal Content */
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 10% auto; 
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    max-width: 500px; /* Maximum width */
-    border-radius: 5px; /* Rounded corners */
+    width: 90%; 
+    max-width: 500px; 
+    border-radius: 5px; 
 }
 
-/* Close Button */
 .close-button {
     color: #aaa;
     float: right;
@@ -263,66 +258,6 @@ table tr:hover {
     cursor: pointer;
 }
 
-/* Styling untuk dropdown */
-.nav-item.dropdown {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
-}
-
-.nav-item .dropdown-indicator {
-    margin-left: 8px; 
-    font-size: 12px; 
-    transition: transform 0.3s ease; 
-}
-
-/* Styling dropdown menu */
-.nav-item .dropdown-menu {
-    display: none; 
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 200px;
-    background-color: var(--card-bg);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    z-index: 100;
-}
-
-.nav-item .dropdown-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.nav-item .dropdown-menu li {
-    padding: 10px;
-    font-size: 14px;
-}
-
-.nav-item .dropdown-menu li a {
-    color: var(--text-color);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.nav-item .dropdown-menu li:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.nav-item.active .dropdown-menu {
-    display: block;
-}
-
-.nav-item.active .dropdown-indicator {
-    transform: rotate(180deg); 
-}
-
-
 @media (max-width: 768px) {
     .dashboard-container {
         flex-direction: column;
@@ -332,11 +267,13 @@ table tr:hover {
         width: 100%;
     }
 
-    .nav-item span {
-        display: inline-block;
-    }
-
     .form-row {
         flex-direction: column;
+    }
+
+    .form-row input, 
+    .form-row select {
+        flex-grow: unset;
+        width: 100%;
     }
 }
