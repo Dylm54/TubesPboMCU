@@ -439,3 +439,81 @@ btnGenerate.addEventListener('click', async function (event) {
 
 
 document.addEventListener('DOMContentLoaded', fetchPaketData);
+
+const searchTypeSelect = document.getElementById('search-type');
+const namaInput = document.getElementById('cari-nama');
+const paketSelect = document.getElementById('filter-paket');
+const periodeAwalInput = document.getElementById('filter-periode-mulai');
+const periodeAkhirInput = document.getElementById('filter-periode-akhir');
+const searchBtn = document.getElementById('cari-btn');
+const pasienListBody = document.querySelector('#pasien-list tbody');
+
+searchTypeSelect.addEventListener('change', () => {
+    const searchType = searchTypeSelect.value;
+    
+    // Hide all inputs first
+    namaInput.style.display = 'none';
+    paketSelect.style.display = 'none';
+    periodeAwalInput.style.display = 'none';
+    periodeAkhirInput.style.display = 'none';
+
+    // Show relevant inputs based on search type
+    switch(searchType) {
+        case 'nama':
+            namaInput.style.display = 'block';
+            break;
+        case 'paket':
+            paketSelect.style.display = 'block';
+            break;
+        case 'periode':
+            periodeAwalInput.style.display = 'block';
+            periodeAkhirInput.style.display = 'block';
+            break;
+    }
+});
+
+//   // Search button click handler
+//   searchBtn.addEventListener('click', async () => {
+//     const searchType = searchTypeSelect.value;
+//     let searchParams = {};
+
+//     switch(searchType) {
+//         case 'nama':
+//             searchParams = { nama: namaInput.value };
+//             break;
+//         case 'paket':
+//             searchParams = { paketId: paketSelect.value };
+//             break;
+//         case 'periode':
+//             searchParams = { 
+//                 startDate: periodeAwalInput.value, 
+//                 endDate: periodeAkhirInput.value 
+//             };
+//             break;
+//     }
+
+//     try {
+//         const queryString = new URLSearchParams(searchParams).toString();
+//         const response = await fetch(`${apiUrl}/api/admin/searchPasien?${queryString}`);
+//         const pasiens = await response.json();
+
+//         // Clear previous results
+//         pasienListBody.innerHTML = '';
+
+//         // Populate table
+//         pasiens.forEach(pasien => {
+//             const row = document.createElement('tr');
+//             row.innerHTML = `
+//                 <td>${pasien.nama}</td>
+//                 <td>${pasien.noIdentitas}</td>
+//                 <td>${pasien.paket.namaPaket}</td>
+//                 <td>${formattingDate(pasien.tanggalDaftar)}</td>
+//                 <td>${pasien.alamat}</td>
+//                 <td>${pasien.noTelp}</td>
+//             `;
+//             pasienListBody.appendChild(row);
+//         });
+//     } catch (error) {
+//         console.error('Error searching patients:', error);
+//     }
+// });
