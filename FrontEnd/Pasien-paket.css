@@ -32,6 +32,7 @@ nav {
     align-items: center;
     z-index: 100;
     position: sticky;
+    margin-bottom: 20px;
 }
 
 .nav_logo {
@@ -46,23 +47,7 @@ nav {
 }
 
 .nav_links {
-    font-family: "PT Serif", serif;
-    font-weight: 400;
-    font-size: 1.25rem;
-    color: var(--white);
-    font-style: normal;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.nav_links a {
-    color: var(--white);
-    transition: color 0.3s ease;
-}
-
-.nav_links a:hover {
-    color: rgb(162, 162, 162);
+    justify-content: space-between;
 }
 
 .container {
@@ -166,36 +151,155 @@ nav {
     background-color: var(--primary-color);
 }
 
-.sering-beli-judul {
+.sering-beli {
     text-align: center;
-    user-select: none;
+    width: 50%;
+    margin: 0 auto;
 }
+
+.sering-beli-judul {
+    text-align: left;
+    margin: 0 0 5px 5px;
+    user-select: none;
+    font-weight: bold;
+}
+
 .horizontal-scroll {
     display: flex;
     overflow-x: auto;
-    white-space: nowrap; /* Mencegah item turun ke baris berikutnya */
-    width: 80%; /* Atau tetapkan ukuran tetap, misal 600px */
-    max-width: 800px; /* Membatasi ukuran maksimal */
-    min-width: 400px; /* Membatasi ukuran minimal */
-    margin: auto; /* Agar berada di tengah secara horizontal */
+    white-space: nowrap;
+    max-width: 800px;
+    min-width: 400px;
+    margin: auto;
     padding: 10px;
     gap: 10px;
     background-color: #f0f0f0;
-    border-radius: 10px; /* Tambahkan gaya sudut */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .scroll-item {
-    flex: 0 0 auto; /* Mencegah item menyusut */
+    flex: 0 0 auto;
     width: 150px;
     height: 100px;
-    background-color: #48D1CC;
-    color: white;
+    background-color: var(--white);
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    text-align: center;
+    text-align: left;
     font-size: 1rem;
     cursor: pointer;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-info .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.dropdown-menu li:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.user-info .dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 8px;
+    color: var(--white);
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:active {
+    outline: none;
+    background-color: rgba(72, 209, 204, 0.1);
+}
+
+.dropdown-toggle i {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-toggle.active i {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--white);
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    width: 200px;
+    margin-top: 5px;
+    border: 1px solid #e0e0e0;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    color: var(--white);
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+}
+
+.dropdown-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.dropdown-menu li a:focus,
+.dropdown-menu li a:active {
+    outline: none;
+    background-color: rgba(72, 209, 204, 0.1);
 }
