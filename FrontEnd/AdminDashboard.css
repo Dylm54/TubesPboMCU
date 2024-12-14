@@ -258,6 +258,32 @@ table tr:hover {
     cursor: pointer;
 }
 
+.search-type-dropdown {
+    margin-bottom: 20px;
+}
+
+.search-type-dropdown select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: var(--card-bg);
+}
+
+#search-fields {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#search-fields input, 
+#search-fields select {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
 @media (max-width: 768px) {
     .dashboard-container {
         flex-direction: column;
