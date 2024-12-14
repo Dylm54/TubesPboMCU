@@ -49,14 +49,16 @@
                     <div class="user-info">
                         <img src="/FrontEnd/Foto/IMG4.png" alt="Admin">
                         <div class="user-info">
-                            <div class="nav-item dropdown">
-                                <span>Administrator</span>
-                                <span class="dropdown-indicator">▼</span>
+                            <div class="dropdown">
+                                <button class="dropdown-toggle">
+                                    <span>Administrator</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
                                 <div class="dropdown-menu">
                                     <ul>
                                         <li><i class="fas fa-user"></i> Gemini Baik</li>
-                                        <li><a href="edit_profile.html"><i class="fas fa-edit"></i> Edit Profile</a></li>
-                                        <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
+                                        <li><a href="#" data-action="edit-profile"><i class="fas fa-edit"></i> Edit Profile</a></li>
+                                        <li><a href="#" data-action="logout"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -170,7 +172,6 @@
                     </div>
                 </section>
 
-                <!-- Replace the existing #pencarian section in the original HTML with this -->
 <section id="pencarian" class="section">
     <div class="card">
         <div class="card-header">
@@ -185,7 +186,6 @@
                 </select>
             </div>
             <div class="form-row" id="search-fields">
-                <!-- Dynamic search fields will be populated by JavaScript -->
                 <input type="text" id="cari-nama" placeholder="Nama Pasien" style="display:block;">
                 <select id="filter-paket" style="display:none;">
                     <option value="">Pilih Paket</option>

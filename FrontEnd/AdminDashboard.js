@@ -163,9 +163,10 @@ const btnGenerate = document.getElementById('generate-laporan');
 const inputLaporanDari = document.getElementById('laporan-dari');
 const inputLaporanSampai = document.getElementById('laporan-sampai');
 const totalHarga = document.getElementById('total-harga');
-const dropdownIndicator = document.querySelector('.dropdown-indicator');
-const dropdown = document.querySelector('.nav-item.dropdown');
+const dropdown = document.querySelector('.user-info .dropdown');
+const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
 const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+
 const apiUrl = 'http://localhost:8080';
 
 navItems.forEach(item => {
@@ -181,16 +182,16 @@ navItems.forEach(item => {
     });
 });
 
-dropdownIndicator.addEventListener('click', (event) => {
-    event.stopPropagation(); 
-    dropdown.classList.toggle('active'); 
-});
+// dropdownIndicator.addEventListener('click', (event) => {
+//     event.stopPropagation(); 
+//     dropdown.classList.toggle('active'); 
+// });
 
-document.addEventListener('click', (event) => {
-    if (!dropdown.contains(event.target)) {
-        dropdown.classList.remove('active'); 
-    }
-});
+// document.addEventListener('click', (event) => {
+//     if (!dropdown.contains(event.target)) {
+//         dropdown.classList.remove('active'); 
+//     }
+// });
 
 async function fetchPaketData() {
     try {
@@ -517,3 +518,44 @@ searchTypeSelect.addEventListener('change', () => {
 //         console.error('Error searching patients:', error);
 //     }
 // });
+
+    // Toggle dropdown
+    dropdownToggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        dropdownToggle.classList.toggle('active');
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!dropdown.contains(event.target)) {
+            dropdownToggle.classList.remove('active');
+            dropdownMenu.style.display = 'none';
+        }
+    });
+
+    // Prevent dropdown from closing when clicking inside
+    dropdownMenu.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+
+    // Handle dropdown item actions
+    dropdownMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const action = link.getAttribute('data-action');
+
+            switch(action) {
+                case 'edit-profile':
+                    console.log('Edit profile clicked');
+                    dropdownToggle.classList.remove('active');
+                    dropdownMenu.style.display = 'none';
+                    break;
+                case 'logout':
+                    console.log('Logout clicked');
+                    dropdownToggle.classList.remove('active');
+                    dropdownMenu.style.display = 'none';
+                    break;
+            }
+        });
+    });

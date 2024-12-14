@@ -116,9 +116,9 @@ header {
     z-index: 100;
 }
 
-.user-info:hover .dropdown-menu {
+/* .user-info:hover .dropdown-menu {
     display: block;
-}
+} */
 
 .dropdown-menu ul {
     list-style: none;
@@ -284,6 +284,79 @@ table tr:hover {
     border-radius: 4px;
 }
 
+
+/*dropdown admin */
+.user-info .dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 8px;
+    color: var(--text-color);
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:active {
+    outline: none;
+    background-color: rgba(72, 209, 204, 0.1);
+}
+
+.dropdown-toggle i {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-toggle.active i {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--card-bg);
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    width: 200px;
+    margin-top: 5px;
+    border: 1px solid #e0e0e0;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+}
+
+.dropdown-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.dropdown-menu li a:focus,
+.dropdown-menu li a:active {
+    outline: none;
+    background-color: rgba(72, 209, 204, 0.1);
+}
+
 @media (max-width: 768px) {
     .dashboard-container {
         flex-direction: column;
@@ -303,3 +376,4 @@ table tr:hover {
         width: 100%;
     }
 }
+
