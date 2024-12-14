@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+    <link rel="stylesheet" href="SettingSchedule.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <div class="navbar">
+        <nav>
+            <div class="nav_logo">MEDCheck</div>
+            <div class="nav_links">
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="AboutPage.html">About Us</a></li>
+            </div>
+        </nav>
+    </div>    
+    <div class="container">
+        <h1>Tanggal Kunjungan</h1>
+        <div class="input-group">
+            <label for="date">Tanggal</label>
+            <input type="date" id="date">
+        </div>
+        <div class="input-group">
+            <label for="time">Jam Kedatangan</label>
+            <input type="time" id="time">   
+        </div>
+        <div class="input-group">
+            <h3>Order Details</h3>
+            <p><strong>Nama Pasien</strong></p>
+            <p>Nama Paket</p>
+            <p><strong>Total Pemeriksaan</strong></p>
+        </div>
+        <button class="schedule-button" onclick="submitSchedule()">Simpan Jadwal</button>
+        <div class="output" id="output"></div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-message"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Logo and Description -->
+            <div class="footer-section">
+                <h2>MEDCheck</h2>
+                <p>Jaga kesehatan Anda dengan layanan Medical Check-Up terbaik. Kami hadir untuk Anda!</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="HomePage.html">Home</a></li>
+                    <li><a href="PaketMCU.html">Services</a></li>
+                    <li><a href="AboutPage.html">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><strong>Address:</strong> Jl. BojongSoang No. 99, Bandung</p>
+                <p><strong>Email:</strong> support@medcheck.com</p>
+                <p><strong>Phone:</strong> +62 813 9866 4887</p>
+            </div>
+
+            <!-- Social Media -->
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a><i class="ri-instagram-line"></i></a>
+                    <a><i class="ri-twitter-line"></i></a>
+                    <a><i class="ri-contacts-line"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 MedCheck. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="SettingSchedule.js"></script>
+</body>
