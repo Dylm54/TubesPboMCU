@@ -5,18 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Pasien-paket2.css" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <title>Medical Check Up | Kel 2</title>
 </head>
 <body>
     <nav>
         <div class="nav_logo">MEDCheck</div>
         <div class="nav_links">
-            <a href="HomePage.html">Home</a>
-            <a href="AboutPage.html">About Us</a>
+            <div class="user-info">
+                <img src="/FrontEnd/Foto/Logorumahsakit.png" alt="PFP">
+                <div class="dropdown">
+                    <button class="dropdown-toggle">
+                        <span>Profile</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li style="cursor: pointer;"><i class="fas fa-user"></i> Gemini Baik</li>
+                            <li><a href="#" data-action="edit-profile"><i class="fas fa-edit"></i> Riwayat Pendaftaran</a></li>
+                            <li><a href="#" data-action="logout"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
     <div class="sering-beli">
-        <div>Tes</div>
         <div class="horizontal-scroll">
             <div class="scroll-item">Item 1</div>
             <div class="scroll-item">Item 2</div>
