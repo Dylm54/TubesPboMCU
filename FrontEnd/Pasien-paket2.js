@@ -6,27 +6,64 @@ const dropdown = document.querySelector('.user-info .dropdown');
 const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
 const dropdownMenu = dropdown.querySelector('.dropdown-menu');
 
+// Data harga pemeriksaan
+const itemPrices = {
+    'Pemeriksaan Hematologi 1': 'Rp170.000',
+    'Pemeriksaan Hematologi 2': 'Rp180.000',
+    'Pemeriksaan Hematologi 3': 'Rp190.000',
+    'Pemeriksaan Urine 1': 'Rp100.000',
+    'Pemeriksaan Urine 2': 'Rp120.000',
+};
+
 // Fungsi untuk menampilkan detail kategori
 function showCategoryDetail(categoryName) {
     categoryDetail.classList.add('active');
     categoryTitle.textContent = `KATEGORI: ${categoryName}`;
 
     categoryItemsContainer.innerHTML = '';
-    if (categoryName === 'HEMATOLOGI') {
-        addCategoryItem('Pemeriksaan Hematologi 1');
-        addCategoryItem('Pemeriksaan Hematologi 2');
-        addCategoryItem('Pemeriksaan Hematologi 3');
-    } else if (categoryName === 'URINE') {
-        addCategoryItem('Pemeriksaan Urine 1');
-        addCategoryItem('Pemeriksaan Urine 2');
-    } // ... tambahkan else if untuk kategori lain
+
+    const categoryItems = {
+        'HEMATOLOGI': ['Pemeriksaan Hematologi 1', 'Pemeriksaan Hematologi 2', 'Pemeriksaan Hematologi 3'],
+        'URINE': ['Pemeriksaan Urine 1', 'Pemeriksaan Urine 2'],
+        // ... tambahkan kategori lain di sini (BELUM LENGKAP GES)
+    };
+
+    const items = categoryItems[categoryName];
+    if (items) {
+        items.forEach(itemName => {
+            addCategoryItem(itemName, itemPrices[itemName]);
+        });
+    } else {
+        console.error(`Kategori "${categoryName}" tidak ditemukan.`);
+    }
 }
 
 // Fungsi untuk menambahkan item pemeriksaan
-function addCategoryItem(itemName) {
+function addCategoryItem(itemName, itemPrice, categoryName) { // Tambahkan parameter categoryName
     const item = document.createElement('div');
     item.classList.add('category-item');
-    item.textContent = itemName;
+
+    const nameElement = document.createElement('div');
+    nameElement.classList.add('item-name');
+    nameElement.textContent = itemName;
+
+    const priceElement = document.createElement('div');
+    priceElement.classList.add('item-price');
+    priceElement.textContent = itemPrice;
+
+    const addButton = document.createElement('button');
+    addButton.classList.add('add-to-cart');
+    addButton.innerHTML = '+';
+
+    // Event listener untuk klik item
+    item.addEventListener('click', () => {
+        // Kirim categoryName sebagai query parameter
+        window.location.href = `detail-item.html?name=${encodeURIComponent(itemName)}&price=${encodeURIComponent(itemPrice)}&category=${encodeURIComponent(categoryName)}`;
+    });
+
+    item.appendChild(nameElement);
+    item.appendChild(priceElement);
+    item.appendChild(addButton);
     categoryItemsContainer.appendChild(item);
 }
 
