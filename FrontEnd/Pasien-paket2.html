@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <title>Medical Check Up | Kel 2</title>
 </head>
+
 <body>
     <nav>
         <div class="nav_logo">MEDCheck</div>
@@ -21,37 +23,31 @@
                     </button>
                     <div class="dropdown-menu">
                         <ul>
-                            <li style="cursor: pointer;"><i class="fas fa-user"></i> Gemini Baik</li>
-                            <li><a href="#" data-action="edit-profile"><i class="fas fa-edit"></i> Riwayat Pendaftaran</a></li>
-                            <li><a href="#" data-action="logout"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
+                            <li id="nama-pasien" style="display: flex; gap: 10px; align-items: center"></li>
+                            <li id="alamat-pasien" style="display: flex; gap: 10px; align-items: center"></li>
+                            <li id="noTelp-pasien" style="display: flex; gap: 10px; align-items: center"></li>
+                            <li class="clickable-profile"><a href="History.html"><i class="fas fa-edit"></i> Riwayat
+                                    Pendaftaran</a></li>
+                            <li class="clickable-profile" id="logout-pasien"><a href="#" data-action="logout"><i
+                                        class="fas fa-sign-out-alt"></i> Keluar</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
-    <div class="sering-beli">
-        <div class="horizontal-scroll">
-            <div class="scroll-item">Item 1</div>
-            <div class="scroll-item">Item 2</div>
-            <div class="scroll-item">Item 3</div>
-            <div class="scroll-item">Item 5</div>
-            <div class="scroll-item">Item 6</div>
-            <div class="scroll-item">Item 7</div>
-            <div class="scroll-item">Item 8</div>
-        </div>
-    </div>
 
     <div class="container">
         <div class="category-detail">
             <h2 id="category-title"></h2>
             <p>Silahkan memilih pemeriksaan anda</p>
             <div class="category-items">
-                </div>
+            </div>
             <button class="back-button">Kembali</button>
         </div>
     </div>
 
     <script src="Pasien-paket2.js"></script>
 </body>
+
 </html>

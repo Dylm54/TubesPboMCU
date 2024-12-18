@@ -87,7 +87,7 @@ loginBtn.addEventListener('click', async (event) => {
         }
         const data = await response.json();
         console.log(data)
-        document.cookie = `userInfo=${encodeURIComponent(JSON.stringify(data))}; path=/; max-age=3600`;
+        document.cookie = `userInfo=${encodeURIComponent(JSON.stringify(data))}; path=/; max-age=604800`;
         window.location.href = "/FrontEnd/AdminDashboard.html"
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);

@@ -26,48 +26,43 @@ public class PasienService {
     private PendaftaranMCURepository pendaftaranMCURepository;
 
     public Pasien createPasien(Pasien pasien) {
-        // Cek apakah pasien dengan noTelp sudah ada
         Optional<Pasien> existingPasien = pasienRepository.findByNoTelp(pasien.getNoTelp());
 
         if (existingPasien.isPresent()) {
-            // Jika pasien sudah ada, throw exception
             Pasien oldPasien = existingPasien.get();
             return oldPasien;
         }
 
-        // Simpan pasien jika belum ada
         return pasienRepository.save(pasien);
     }
 
     public Pasien daftarMCU(String pasienId, PendaftaranMCU pendaftaran) {
-        // Cari pasien berdasarkan ID
         Optional<Pasien> optionalPasien = pasienRepository.findById(pasienId);
         if (!optionalPasien.isPresent()) {
             throw new RuntimeException("Pasien dengan ID " + pasienId + " tidak ditemukan.");
         }
 
-        // Validasi paket MCU
         String paketId = pendaftaran.getPaket().getIdPaket();
         Optional<PaketMCU> optionalPaket = paketMCURepository.findById(paketId);
         if (!optionalPaket.isPresent()) {
             throw new RuntimeException("Paket MCU dengan ID " + paketId + " tidak ditemukan.");
         }
 
-        // Dapatkan pasien dan paket
         Pasien pasien = optionalPasien.get();
         PaketMCU paket = optionalPaket.get();
 
-        // Tetapkan paket ke pendaftaran
         pendaftaran.setPaket(paket);
         pendaftaran.setPasien(pasien);
 
         pendaftaranMCURepository.save(pendaftaran);
 
-        // Tambahkan pendaftaran ke riwayat pasien
         pasien.getRiwayatPendaftaran().add(pendaftaran);
 
-        // Simpan pasien dengan data terbaru
         return pasienRepository.save(pasien);
+    }
+
+    public Optional<Pasien> findPasienById(String id) {
+        return pasienRepository.findById(id);
     }
 
 }

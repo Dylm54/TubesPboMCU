@@ -90,7 +90,6 @@ public class PetugasAdminLabController {
         List<SumberPemasukan> detail = pendaftaranService.getDetailPemasukan(start, end);
         double total = detail.stream().mapToDouble(SumberPemasukan::getHarga).sum();
 
-        // Membuat respons sebagai map
         Map<String, Object> laporan = new HashMap<>();
         laporan.put("detail", detail);
         laporan.put("total", total);
@@ -100,12 +99,11 @@ public class PetugasAdminLabController {
 
     @GetMapping("/findPasienByPeriodeMCU") // + ex(?paketId=paket123&startDate=2024-01-01&endDate=2024-12-31)
     public List<Pasien> findPasienByPaketAndTanggal(
-            @RequestParam String paketId, 
             @RequestParam 
             @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate, 
             @RequestParam 
             @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate) {
-        return adminService.getPasienByPaketAndTanggalDaftar(paketId, startDate, endDate);
+        return adminService.getPasienByPaketAndTanggalDaftar(startDate, endDate);
     }
 
     @GetMapping("/findAllPasien")
@@ -131,5 +129,10 @@ public class PetugasAdminLabController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/findPaketbyJenis") // + ex(?jenisPemeriksaan=Fungsi Ginjal)
+    public List<PaketMCU> getPaketByJenisPemeriksaan(@RequestParam String jenisPemeriksaan) {
+        return adminService.getPaketByJenisPemeriksaan(jenisPemeriksaan);
     }
 }

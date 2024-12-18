@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="header">
-        <a href="" class="back-button"><i class="ri-arrow-left-line"></i></a>
+        <a href="" onclick="window.history.back(); return false;" class="back-button"><i class="ri-arrow-left-line"></i></a>
         <h2>Detail Test</h2>
     </div>
 
@@ -18,21 +18,17 @@
         <p id="item-price"></p>
 
         <div class="section">
-            <h4>Pilih Varian</h4>
-            <div class="variant-options">
-                <button class="variant-button active">REGULER</button>
-                <button class="variant-button">LAYANAN CEPAT</button>
-            </div>
-        </div>
-
-        <div class="section">
             <h4>Deskripsi</h4>
             <div class="description-content">
                 <p id="item-description"></p>
             </div>
         </div>
 
-        <button class="order-button">Pilih Pemeriksaan</button>
+        <div style="display: flex; width: 100%; flex-direction: column; align-items: center;">
+            <hr/>
+            <button class="order-button">Pilih Pemeriksaan</button>
+        </div>
+        
     </div>
 
     <script src="detail-item.js"></script>

@@ -72,8 +72,8 @@ public class PetugasAdminLabService {
         return pasienRepository.findByRiwayatPendaftaranPaketNamaPaket(namaPaket);
     }
 
-    public List<Pasien> getPasienByPaketAndTanggalDaftar(String paketId, Date startDate, Date endDate) {
-        return pasienRepository.findByRiwayatPendaftaranPaketIdPaketAndRiwayatPendaftaranTanggalDaftarBetween(paketId, startDate, endDate);
+    public List<Pasien> getPasienByPaketAndTanggalDaftar(Date startDate, Date endDate) {
+        return pasienRepository.findByRiwayatPendaftaranTanggalDaftarBetween(startDate, endDate);
     }
 
     public List<Pasien> getAllPasien() {
@@ -82,6 +82,10 @@ public class PetugasAdminLabService {
 
     public List<PaketMCU> getAllPaket() {
         return paketMCURepository.findAll();
+    }
+
+    public List<PaketMCU> getPaketByJenisPemeriksaan(String jenisPemeriksaan) {
+        return paketMCURepository.findByJenisPemeriksaan(jenisPemeriksaan);
     }
 
 }

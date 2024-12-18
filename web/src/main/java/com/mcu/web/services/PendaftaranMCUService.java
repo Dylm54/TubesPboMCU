@@ -18,10 +18,10 @@ public class PendaftaranMCUService {
     private PendaftaranMCURepository repository;
 
     public List<SumberPemasukan> getDetailPemasukan(Date startDate, Date endDate) {
-        // Ambil semua pendaftaran dalam periode
+
         List<PendaftaranMCU> pendaftaranList = repository.findByTanggalDaftarBetween(startDate, endDate);
 
-        // Buat list sumber pemasukan
+
         return pendaftaranList.stream()
                 .map(pendaftaran -> new SumberPemasukan(
                         pendaftaran.getPaket().getNamaPaket(),

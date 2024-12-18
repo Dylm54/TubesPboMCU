@@ -14,5 +14,7 @@ public interface PasienRepository extends MongoRepository<Pasien, String> {
 
     Optional<Pasien> findByNoTelp(String noTelp);
 
-    List<Pasien> findByRiwayatPendaftaranPaketIdPaketAndRiwayatPendaftaranTanggalDaftarBetween(String paketId, Date startDate, Date endDate);
+    Optional<Pasien> findById(String id);
+
+    List<Pasien> findByRiwayatPendaftaranTanggalDaftarBetween(Date startDate, Date endDate);
 }
