@@ -5,41 +5,62 @@ const backButton = document.querySelector('.back-button');
 const dropdown = document.querySelector('.user-info .dropdown');
 const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
 const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+const profilePasienNama = document.getElementById('nama-pasien')
+const profilePasienAlamat = document.getElementById('alamat-pasien')
+const profilePasienNoTelp = document.getElementById('noTelp-pasien')
+const profilePasienLogout = document.getElementById('logout-pasien')
+const apiUrl = 'http://localhost:8080'
 
-// Data harga pemeriksaan
-const itemPrices = {
-    'Pemeriksaan Hematologi 1': 'Rp170.000',
-    'Pemeriksaan Hematologi 2': 'Rp180.000',
-    'Pemeriksaan Hematologi 3': 'Rp190.000',
-    'Pemeriksaan Urine 1': 'Rp100.000',
-    'Pemeriksaan Urine 2': 'Rp120.000',
-};
+async function fetchPaketData() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const kategori = urlParams.get('kategori');
 
-// Fungsi untuk menampilkan detail kategori
-function showCategoryDetail(categoryName) {
+    try {
+        const response = await fetch(`${apiUrl}/api/admin/findPaketbyJenis?jenisPemeriksaan=${kategori}`);
+        if (!response.ok) {
+            throw new Error('Network response paket was not ok ' + response.statusText);
+        }
+
+        const data = await response.json();
+        console.log(data)
+
+        showCategoryDetail(kategori, data);
+
+        const userInfo = getCookie('userInfo');
+        console.log(userInfo);
+        profilePasienNama.innerHTML = `<i class="fas fa-user"></i> ${userInfo.nama}`
+        profilePasienAlamat.innerHTML = `<i class="fa-solid fa-house"></i> ${userInfo.alamat}`
+        profilePasienNoTelp.innerHTML = `<i class="fa-solid fa-phone"></i> ${userInfo.noTelp}`
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return JSON.parse(decodeURIComponent(parts.pop().split(';').shift()));
+}
+
+function showCategoryDetail(categoryName, daftarPaket) {
     categoryDetail.classList.add('active');
     categoryTitle.textContent = `KATEGORI: ${categoryName}`;
 
     categoryItemsContainer.innerHTML = '';
 
-    const categoryItems = {
-        'HEMATOLOGI': ['Pemeriksaan Hematologi 1', 'Pemeriksaan Hematologi 2', 'Pemeriksaan Hematologi 3'],
-        'URINE': ['Pemeriksaan Urine 1', 'Pemeriksaan Urine 2'],
-        // ... tambahkan kategori lain di sini (BELUM LENGKAP GES)
-    };
-
-    const items = categoryItems[categoryName];
+    const items = daftarPaket;
     if (items) {
         items.forEach(itemName => {
-            addCategoryItem(itemName, itemPrices[itemName]);
+            addCategoryItem(itemName.namaPaket, itemName.harga, itemName.idPaket);
         });
     } else {
         console.error(`Kategori "${categoryName}" tidak ditemukan.`);
     }
 }
 
-// Fungsi untuk menambahkan item pemeriksaan
-function addCategoryItem(itemName, itemPrice, categoryName) { // Tambahkan parameter categoryName
+
+function addCategoryItem(itemName, itemPrice, itemId) {
     const item = document.createElement('div');
     item.classList.add('category-item');
 
@@ -49,16 +70,14 @@ function addCategoryItem(itemName, itemPrice, categoryName) { // Tambahkan param
 
     const priceElement = document.createElement('div');
     priceElement.classList.add('item-price');
-    priceElement.textContent = itemPrice;
+    priceElement.textContent = `Rp${itemPrice}`;
 
     const addButton = document.createElement('button');
     addButton.classList.add('add-to-cart');
     addButton.innerHTML = '+';
 
-    // Event listener untuk klik item
     item.addEventListener('click', () => {
-        // Kirim categoryName sebagai query parameter
-        window.location.href = `detail-item.html?name=${encodeURIComponent(itemName)}&price=${encodeURIComponent(itemPrice)}&category=${encodeURIComponent(categoryName)}`;
+        window.location.href = `detail-item.html?id=${itemId}`;
     });
 
     item.appendChild(nameElement);
@@ -67,25 +86,20 @@ function addCategoryItem(itemName, itemPrice, categoryName) { // Tambahkan param
     categoryItemsContainer.appendChild(item);
 }
 
-// Event listener untuk tombol kembali
 backButton.addEventListener('click', () => {
-    // Kembali ke Pasien-paket.html
     window.location.href = 'Pasien-paket.html';
 });
 
-// Tampilkan detail kategori "HEMATOLOGI" saat halaman dimuat
-document.addEventListener('DOMContentLoaded', () => {
-    showCategoryDetail('HEMATOLOGI');
-});
 
-// Toggle dropdown
+
+
 dropdownToggle.addEventListener('click', (event) => {
     event.stopPropagation();
     dropdownToggle.classList.toggle('active');
     dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
 });
 
-// Close dropdown when clicking outside
+
 document.addEventListener('click', (event) => {
     if (!dropdown.contains(event.target)) {
         dropdownToggle.classList.remove('active');
@@ -93,18 +107,25 @@ document.addEventListener('click', (event) => {
     }
 });
 
-// Prevent dropdown from closing when clicking inside
 dropdownMenu.addEventListener('click', (event) => {
     event.stopPropagation();
 });
 
-// Handle dropdown item actions
+function clearAllCookies() {
+    const cookies = document.cookie.split(";");
+
+    cookies.forEach(cookie => {
+        const cookieName = cookie.split("=")[0].trim();
+        document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    });
+}
+
 dropdownMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', (event) => {
-        event.preventDefault();
+
         const action = link.getAttribute('data-action');
 
-        switch(action) {
+        switch (action) {
             case 'edit-profile':
                 console.log('Edit profile clicked');
                 dropdownToggle.classList.remove('active');
@@ -114,7 +135,14 @@ dropdownMenu.querySelectorAll('a').forEach(link => {
                 console.log('Logout clicked');
                 dropdownToggle.classList.remove('active');
                 dropdownMenu.style.display = 'none';
+                window.location.href = "/FrontEnd/Login.html"
+                clearAllCookies()
+
                 break;
         }
     });
 });
+
+
+
+document.addEventListener('DOMContentLoaded', fetchPaketData);

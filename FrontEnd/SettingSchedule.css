@@ -16,6 +16,32 @@ body {
     color: #333;
 }
 
+.header {
+    background-color: var(--dark-green);
+    color: var(--white);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.back-button {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-right: 10px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
 .navbar{
     margin: auto;
     display: flex;

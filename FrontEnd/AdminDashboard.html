@@ -19,7 +19,7 @@
                 <h2>RUMAH SAKIT PBO</h2>
             </div>
             <nav>
-                <ul>
+                <ul style="padding-left: 0;">
                     <li class="nav-item active" data-section="paket-mcu">
                         <i class="fas fa-notes-medical"></i>
                         <span>Kelola Paket MCU</span>
@@ -56,9 +56,10 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><i class="fas fa-user"></i> Gemini Baik</li>
-                                        <li><a href="#" data-action="edit-profile"><i class="fas fa-edit"></i> Edit Profile</a></li>
-                                        <li><a href="#" data-action="logout"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
+                                        <li id="nama-admin" style="display: flex; gap: 10px; align-items: center"></li>
+                                        <li id="alamat-admin" style="display: flex; gap: 10px; align-items: center"></li>
+                                        <li id="noTelp-admin" style="display: flex; gap: 10px; align-items: center"></li>
+                                        <li id="logout-admin"><a href="#" data-action="logout"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -102,7 +103,6 @@
                                 <table id="paket-list">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
                                             <th>Nama Paket</th>
                                             <th>Jenis</th>
                                             <th>Dekripsi</th>
@@ -182,7 +182,7 @@
                 <select id="search-type">
                     <option value="nama">Pencarian berdasarkan Nama</option>
                     <option value="paket">Pencarian berdasarkan Paket</option>
-                    <option value="periode">Pencarian berdasarkan Periode</option>
+                    <option value="periode">Pencarian berdasarkan Periode Pendaftaran</option>
                 </select>
             </div>
             <div class="form-row" id="search-fields">
@@ -201,11 +201,9 @@
                     <thead>
                         <tr>
                             <th>Nama</th>
-                            <th>No. Identitas</th>
-                            <th>Paket</th>
-                            <th>Tanggal</th>
                             <th>Alamat</th>
                             <th>No. Telepon</th>
+                            <th>Riwayat Pendaftaran</th>
                         </tr>
                     </thead>
                     <tbody></tbody>

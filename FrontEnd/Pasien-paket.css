@@ -227,7 +227,7 @@ nav {
     color: var(--text-dark);
 }
 
-.dropdown-menu li:hover {
+.clickable-profile:hover {
     background-color: var(--primary-color);
     color: white;
 }

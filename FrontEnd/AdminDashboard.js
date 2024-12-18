@@ -1,153 +1,3 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//     const paketData = [];
-//     const pasienData = [];
-//     const riwayatPendaftaran = []; 
-
-//     const sectionTitle = document.getElementById("section-title");
-//     const sections = document.querySelectorAll(".section");
-//     const navItems = document.querySelectorAll(".nav-item");
-
-//     const paketNamaInput = document.getElementById("paket-nama");
-//     const paketJenisInput = document.getElementById("paket-jenis");
-//     const paketHargaInput = document.getElementById("paket-harga");
-//     const tambahPaketBtn = document.getElementById("tambah-paket");
-//     const paketListTable = document.getElementById("paket-list").querySelector("tbody");
-
-//     const laporanDariInput = document.getElementById("laporan-dari");
-//     const laporanSampaiInput = document.getElementById("laporan-sampai");
-//     const generateLaporanBtn = document.getElementById("generate-laporan");
-//     const laporanListTable = document.getElementById("laporan-list").querySelector("tbody");
-
-//     const riwayatPendaftaranTable = document.getElementById("riwayat-pendaftaran").querySelector("tbody");
-
-//     function clearTable(tableBody) {
-//         tableBody.innerHTML = "";
-//     }
-
-//     function renderPaketList() {
-//         clearTable(paketListTable);
-//         clearTable(filterPaketInput);
-
-//         filterPaketInput.innerHTML = '<option value="">Pilih Paket</option>';
-
-//         paketData.forEach((paket, index) => {
-//             const row = document.createElement("tr");
-//             row.innerHTML = `
-//                 <td>${paket.nama}</td>
-//                 <td>${paket.jenis}</td>
-//                 <td>${paket.harga}</td>
-//                 <td>
-//                     <button class="btn-success btn-small" data-index="${index}" onclick="editPaket(${index})">Edit</button>
-//                     <button class="btn-primary btn-small" data-index="${index}" onclick="hapusPaket(${index})">Hapus</button>
-//                 </td>
-//             `;
-//             paketListTable.appendChild(row);
-
-//             const option = document.createElement("option");
-//             option.value = paket.nama;
-//             option.textContent = paket.nama;
-//             filterPaketInput.appendChild(option);
-//         });
-//     }
-
-//     function renderRiwayatPendaftaran() {
-//         clearTable(riwayatPendaftaranTable);
-
-//         riwayatPendaftaran.forEach(item => {
-//             const row = document.createElement("tr");
-//             row.innerHTML = `
-//                 <td>${item.tanggal}</td>
-//                 <td>${item.nama}</td>
-//                 <td>${item.alamat}</td>
-//                 <td>${item.noTelepon}</td>
-//                 <td>${item.paket}</td>
-//                 <td>${item.status}</td>
-//             `;
-//             riwayatPendaftaranTable.appendChild(row);
-//         });
-//     }
-
-//     function tambahRiwayatPendaftaran(nama, alamat, noTelepon, paket, status) {
-//         const tanggal = new Date().toLocaleDateString();
-//         riwayatPendaftaran.push({ tanggal, nama, alamat, noTelepon, paket, status });
-//         renderRiwayatPendaftaran();
-//     }
-
-//     tambahPaketBtn.addEventListener("click", () => {
-//         const nama = paketNamaInput.value.trim();
-//         const jenis = paketJenisInput.value;
-//         const harga = parseFloat(paketHargaInput.value);
-
-//         if (!nama || !jenis || isNaN(harga)) {
-//             alert("Mohon lengkapi data paket.");
-//             return;
-//         }
-
-//         paketData.push({ nama, jenis, harga });
-//         renderPaketList();
-
-//         paketNamaInput.value = "";
-//         paketJenisInput.value = "";
-//         paketHargaInput.value = "";
-//     });
-
-//     generateLaporanBtn.addEventListener("click", () => {
-//         const dari = laporanDariInput.value;
-//         const sampai = laporanSampaiInput.value;
-
-//         if (!dari || !sampai) {
-//             alert("Mohon pilih periode laporan.");
-//             return;
-//         }
-
-//         const filteredData = pasienData.filter(pasien => {
-//             const tanggal = new Date(pasien.tanggal);
-//             return tanggal >= new Date(dari) && tanggal <= new Date(sampai);
-//         });
-
-//         renderLaporanList(filteredData);
-//     });
-
-//     navItems.forEach(item => {
-//         item.addEventListener("click", () => {
-//             const sectionId = item.getAttribute("data-section");
-//             sectionTitle.textContent = item.querySelector("span").textContent;
-
-//             sections.forEach(section => section.classList.remove("active"));
-//             navItems.forEach(nav => nav.classList.remove("active"));
-
-//             document.getElementById(sectionId).classList.add("active");
-//             item.classList.add("active");
-//         });
-//     });
-
-//     window.editPaket = (index) => {
-//         const paket = paketData[index];
-//         paketNamaInput.value = paket.nama;
-//         paketJenisInput.value = paket.jenis;
-//         paketHargaInput.value = paket.harga;
-
-//         tambahPaketBtn.textContent = "Update";
-//         tambahPaketBtn.onclick = () => {
-//             paketData[index] = {
-//                 nama: paketNamaInput.value.trim(),
-//                 jenis: paketJenisInput.value,
-//                 harga: parseFloat(paketHargaInput.value),
-//             };
-//             renderPaketList();
-//             tambahPaketBtn.textContent = "Tambah";
-//             tambahPaketBtn.onclick = tambahPaketBtn._originalClick;
-//         };
-//     };
-
-//     window.hapusPaket = (index) => {
-//         if (confirm("Yakin ingin menghapus paket ini?")) {
-//             paketData.splice(index, 1);
-//             renderPaketList();
-//         }
-//     };
-// });
-
 const sectionTitle = document.getElementById("section-title");
 const navItems = document.querySelectorAll(".nav-item");
 const sections = document.querySelectorAll(".section");
@@ -166,6 +16,10 @@ const totalHarga = document.getElementById('total-harga');
 const dropdown = document.querySelector('.user-info .dropdown');
 const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
 const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+const profileAdminNama = document.getElementById('nama-admin')
+const profileAdminAlamat = document.getElementById('alamat-admin')
+const profileAdminNoTelp = document.getElementById('noTelp-admin')
+const profileAdminLogout = document.getElementById('logout-admin')
 
 const apiUrl = 'http://localhost:8080';
 
@@ -181,17 +35,6 @@ navItems.forEach(item => {
         item.classList.add("active");
     });
 });
-
-// dropdownIndicator.addEventListener('click', (event) => {
-//     event.stopPropagation(); 
-//     dropdown.classList.toggle('active'); 
-// });
-
-// document.addEventListener('click', (event) => {
-//     if (!dropdown.contains(event.target)) {
-//         dropdown.classList.remove('active'); 
-//     }
-// });
 
 async function fetchPaketData() {
     try {
@@ -210,9 +53,21 @@ async function fetchPaketData() {
         const data2 = await response2.json();
         console.log(data2)
         populatePendaftaranTable(data2);
+        
+        const userInfo = getCookie('userInfo');
+        console.log(userInfo);
+        profileAdminNama.innerHTML = `<i class="fas fa-user"></i> ${userInfo.nama} (${userInfo.jabatan})`
+        profileAdminAlamat.innerHTML = `<i class="fa-solid fa-house"></i> ${userInfo.alamat}`
+        profileAdminNoTelp.innerHTML = `<i class="fa-solid fa-phone"></i> ${userInfo.noTelp}`
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
     }
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return JSON.parse(decodeURIComponent(parts.pop().split(';').shift()));
 }
 
 async function deletePaket(id) {
@@ -284,7 +139,6 @@ function populatePaketTable(paketList) {
     paketList.forEach(paket => {
         const row = document.createElement('tr');
         row.innerHTML = `
-        <td>${paket.idPaket}</td>
       <td>${paket.namaPaket}</td>
       <td>${paket.jenisPemeriksaan}</td>
       <td>${paket.deskripsiPaket.split(' ').slice(0, 10).join(' ')}...</td>
@@ -410,13 +264,8 @@ editForm.addEventListener('submit', async function (event) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        // Optionally, you can handle the response here if needed
-
-        // Close the modal
         editModal.style.display = 'none';
-
-        // Optionally, refresh the data displayed in the table
-        location.reload(); // Implement this function to refresh your table data
+        location.reload();
     } catch (error) {
         console.error('There was a problem with the update operation:', error);
     }
@@ -429,17 +278,14 @@ btnGenerate.addEventListener('click', async function (event) {
     const tanggalSampai = inputLaporanSampai.value;
 
     const response = await fetch(`${apiUrl}/api/admin/laporanPemasukan?startDate=${tanggalDari}&endDate=${tanggalSampai}`);
-        if (!response.ok) {
-            throw new Error('Network response paket was not ok ' + response.statusText);
-        }
-        const data = await response.json();
-        console.log(data)
-        populateLaporanTable(data.detail)
-        totalHarga.innerHTML = data.total
+    if (!response.ok) {
+        throw new Error('Network response paket was not ok ' + response.statusText);
+    }
+    const data = await response.json();
+    console.log(data)
+    populateLaporanTable(data.detail)
+    totalHarga.innerHTML = data.total
 })
-
-
-document.addEventListener('DOMContentLoaded', fetchPaketData);
 
 const searchTypeSelect = document.getElementById('search-type');
 const namaInput = document.getElementById('cari-nama');
@@ -449,22 +295,38 @@ const periodeAkhirInput = document.getElementById('filter-periode-akhir');
 const searchBtn = document.getElementById('cari-btn');
 const pasienListBody = document.querySelector('#pasien-list tbody');
 
-searchTypeSelect.addEventListener('change', () => {
+searchTypeSelect.addEventListener('change', async () => {
     const searchType = searchTypeSelect.value;
-    
-    // Hide all inputs first
+
     namaInput.style.display = 'none';
     paketSelect.style.display = 'none';
     periodeAwalInput.style.display = 'none';
     periodeAkhirInput.style.display = 'none';
 
-    // Show relevant inputs based on search type
-    switch(searchType) {
+    switch (searchType) {
         case 'nama':
             namaInput.style.display = 'block';
             break;
         case 'paket':
+            try {
+                const response = await fetch(`${apiUrl}/api/admin/findAllPaket`)
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                const data = await response.json();
+                console.log(data)
+                data.forEach(paket => {
+                    const option = document.createElement('option');
+                    option.value = paket.namaPaket;
+                    option.textContent = paket.namaPaket;
+                    paketSelect.appendChild(option);
+                });
+                paketSelect.style.display = 'block';
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
             paketSelect.style.display = 'block';
+
             break;
         case 'periode':
             periodeAwalInput.style.display = 'block';
@@ -473,89 +335,111 @@ searchTypeSelect.addEventListener('change', () => {
     }
 });
 
-//   // Search button click handler
-//   searchBtn.addEventListener('click', async () => {
-//     const searchType = searchTypeSelect.value;
-//     let searchParams = {};
+searchBtn.addEventListener('click', async () => {
+    const searchType = searchTypeSelect.value;
+    let searchParams = {};
 
-//     switch(searchType) {
-//         case 'nama':
-//             searchParams = { nama: namaInput.value };
-//             break;
-//         case 'paket':
-//             searchParams = { paketId: paketSelect.value };
-//             break;
-//         case 'periode':
-//             searchParams = { 
-//                 startDate: periodeAwalInput.value, 
-//                 endDate: periodeAkhirInput.value 
-//             };
-//             break;
-//     }
+    switch (searchType) {
+        case 'nama':
+            searchParams = { nama: namaInput.value };
+            break;
+        case 'paket':
+            searchParams = { namaPaket: paketSelect.value };
+            break;
+        case 'periode':
+            searchParams = {
+                startDate: periodeAwalInput.value,
+                endDate: periodeAkhirInput.value
+            };
+            break;
+    }
 
-//     try {
-//         const queryString = new URLSearchParams(searchParams).toString();
-//         const response = await fetch(`${apiUrl}/api/admin/searchPasien?${queryString}`);
-//         const pasiens = await response.json();
+    console.log(searchParams)
 
-//         // Clear previous results
-//         pasienListBody.innerHTML = '';
+    try {
+        let response;
 
-//         // Populate table
-//         pasiens.forEach(pasien => {
-//             const row = document.createElement('tr');
-//             row.innerHTML = `
-//                 <td>${pasien.nama}</td>
-//                 <td>${pasien.noIdentitas}</td>
-//                 <td>${pasien.paket.namaPaket}</td>
-//                 <td>${formattingDate(pasien.tanggalDaftar)}</td>
-//                 <td>${pasien.alamat}</td>
-//                 <td>${pasien.noTelp}</td>
-//             `;
-//             pasienListBody.appendChild(row);
-//         });
-//     } catch (error) {
-//         console.error('Error searching patients:', error);
-//     }
-// });
+        if (searchType === 'nama') {
+            response = await fetch(`${apiUrl}/api/admin/cariPasienByNama/${searchParams.nama}`)
+        } else if (searchType === 'periode') {
+            response = await fetch(`${apiUrl}/api/admin/findPasienByPeriodeMCU?startDate=${searchParams.startDate}&endDate=${searchParams.endDate}`)
+        } else if (searchType === 'paket') {
+            response = await fetch(`${apiUrl}/api/admin/cariPasienByPaket?namaPaket=${searchParams.namaPaket}`)
+        }
+        const pasiens = await response.json();
+        console.log(pasiens)
+        pasienListBody.innerHTML = '';
 
-    // Toggle dropdown
-    dropdownToggle.addEventListener('click', (event) => {
-        event.stopPropagation();
-        dropdownToggle.classList.toggle('active');
-        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-    });
+        pasiens.forEach(pasien => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${pasien.nama}</td>
+                <td>${pasien.alamat}</td>
+                <td>${pasien.noTelp}</td>
+                <td>
+                    <ol>
+                        ${pasien.riwayatPendaftaran.map(mcu =>
+                `<li>${mcu.paket.namaPaket} - (${formattingDate(mcu.tanggalDaftar)})</li>`
+            ).join('')}
+                    </ol>
+                </td>
+            `;
+            pasienListBody.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Error searching patients:', error);
+    }
+});
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (event) => {
-        if (!dropdown.contains(event.target)) {
-            dropdownToggle.classList.remove('active');
-            dropdownMenu.style.display = 'none';
+dropdownToggle.addEventListener('click', (event) => {
+    event.stopPropagation();
+    dropdownToggle.classList.toggle('active');
+    dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+});
+
+document.addEventListener('click', (event) => {
+    if (!dropdown.contains(event.target)) {
+        dropdownToggle.classList.remove('active');
+        dropdownMenu.style.display = 'none';
+    }
+});
+
+dropdownMenu.addEventListener('click', (event) => {
+    event.stopPropagation();
+});
+
+dropdownMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const action = link.getAttribute('data-action');
+
+        switch (action) {
+            case 'edit-profile':
+                console.log('Edit profile clicked');
+                dropdownToggle.classList.remove('active');
+                dropdownMenu.style.display = 'none';
+                break;
+            case 'logout':
+                console.log('Logout clicked');
+                dropdownToggle.classList.remove('active');
+                dropdownMenu.style.display = 'none';
+                break;
         }
     });
+});
 
-    // Prevent dropdown from closing when clicking inside
-    dropdownMenu.addEventListener('click', (event) => {
-        event.stopPropagation();
+function clearAllCookies() {
+    const cookies = document.cookie.split(";");
+
+    cookies.forEach(cookie => {
+        const cookieName = cookie.split("=")[0].trim();
+        document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
     });
+}
 
-    // Handle dropdown item actions
-    dropdownMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const action = link.getAttribute('data-action');
+profileAdminLogout.addEventListener('click', () => {
+    clearAllCookies();
+    window.location.href = "/FrontEnd/LoginAdmin.html"
+})
 
-            switch(action) {
-                case 'edit-profile':
-                    console.log('Edit profile clicked');
-                    dropdownToggle.classList.remove('active');
-                    dropdownMenu.style.display = 'none';
-                    break;
-                case 'logout':
-                    console.log('Logout clicked');
-                    dropdownToggle.classList.remove('active');
-                    dropdownMenu.style.display = 'none';
-                    break;
-            }
-        });
-    });
+document.addEventListener('DOMContentLoaded', fetchPaketData);

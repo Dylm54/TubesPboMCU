@@ -131,9 +131,9 @@ header {
     font-size: 14px;
 }
 
-.dropdown-menu li:hover {
+#logout-admin:hover {
     background-color: var(--primary-color);
-    color: white;
+    color: white !important;
 }
 
 .section {

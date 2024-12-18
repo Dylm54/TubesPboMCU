@@ -1,41 +1,36 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const itemName = urlParams.get('name');
-    const itemPrice = urlParams.get('price');
-    const categoryName = urlParams.get('category'); // Ambil kategori dari URL
+const itemNameElement = document.getElementById('item-name');
+const itemPriceElement = document.getElementById('item-price');
+const itemDescriptionElement = document.getElementById('item-description');
+const backButton = document.querySelector('.back-button');
+const orderButton = document.querySelector('.order-button')
+const apiUrl = 'http://localhost:8080'
 
-    const itemNameElement = document.getElementById('item-name');
-    const itemPriceElement = document.getElementById('item-price');
-    const itemDescriptionElement = document.getElementById('item-description');
-    const backButton = document.querySelector('.back-button');
+document.addEventListener('DOMContentLoaded', async () => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const idItem = urlParams.get('id');
+    console.log(idItem)
 
-    itemNameElement.textContent = itemName;
-    itemPriceElement.textContent = itemPrice;
+    try {
+        const response = await fetch(`${apiUrl}/api/admin/findPaketbyId/${idItem}`);
+        if (!response.ok) {
+            throw new Error('Network response paket was not ok ' + response.statusText);
+        }
 
-    // Data deskripsi (bisa dipindahkan ke file JSON terpisah jika banyak)
-    const itemDescriptions = {
-        'Pemeriksaan Hematologi 1': 'Merupakan panel pemeriksaan yg terdiri dari Hemoglobin, Lekosit, Trombosit, Hematokrit, Hitung Jenis, LED, Eritosit, dan nilai-nilai MC. Pemeriksaan Hematologi merupakan pemeriksaan dasar yang digunakan secara luas mulai sebagai pemeriksaan penyaring , diagnosis maupun untuk mengikuti perkembangan penyakit, diantaranya penyakit infeksi, kelainan darah, penyakit degeneratif, dan lainnya . Spesimen Pemeriksaan : Darah dengan antikoagulan EDTA. Persiapan Pemeriksaan : Tidak ada persiapan khusus',
-        'Pemeriksaan Hematologi 2': 'Deskripsi untuk Pemeriksaan Hematologi 2...',
-        'Pemeriksaan Hematologi 3': 'Deskripsi untuk Pemeriksaan Hematologi 3...',
-        'Pemeriksaan Urine 1': 'Deskripsi untuk Pemeriksaan Urine 1...',
-        'Pemeriksaan Urine 2': 'Deskripsi untuk Pemeriksaan Urine 2...',
-    };
+        const data = await response.json();
+        console.log(data)
 
-    itemDescriptionElement.textContent = itemDescriptions[itemName] || 'Deskripsi tidak tersedia.';
+        itemNameElement.textContent = data.namaPaket
+        itemPriceElement.textContent = `Rp${data.harga}`
+        itemDescriptionElement.textContent = data.deskripsiPaket || 'Deskripsi tidak tersedia.';
 
-    // Event listener untuk tombol varian
-    const variantButtons = document.querySelectorAll('.variant-button');
-    variantButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            variantButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-        });
-    });
+        orderButton.addEventListener('click', () => {
+            window.location.href = `SettingSchedule.html?idPaket=${idItem}`
+        })
 
-    // Update href pada tombol kembali
-    if (categoryName) {
-        backButton.href = `Pasien-paket2.html?category=${encodeURIComponent(categoryName)}`;
-    } else {
-        backButton.href = `Pasien-paket.html`;
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
     }
+
+
 });
