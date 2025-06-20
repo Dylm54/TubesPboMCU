@@ -12,4 +12,13 @@ public class PetugasAdminLab extends User{
         super(id, nama, alamat, noTelp, password);
         this.jabatan = jabatan;
     }
+
+    public String getJabatan() {
+        return this.jabatan;
+    }
+
+    public void setJabatan(String jabatan) {
+        this.jabatan = jabatan;
+    }
+
 }

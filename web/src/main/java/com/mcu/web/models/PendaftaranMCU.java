@@ -26,4 +26,36 @@ public class PendaftaranMCU {
         this.paket = paket;
     }
 
+    public String getIdPendaftaran() {
+        return this.idPendaftaran;
+    }
+
+    public void setIdPendaftaran(String idPendaftaran) {
+        this.idPendaftaran = idPendaftaran;
+    }
+
+    public Date getTanggalDaftar() {
+        return this.tanggalDaftar;
+    }
+
+    public void setTanggalDaftar(Date tanggalDaftar) {
+        this.tanggalDaftar = tanggalDaftar;
+    }
+
+    public Pasien getPasien() {
+        return this.pasien;
+    }
+
+    public void setPasien(Pasien pasien) {
+        this.pasien = pasien;
+    }
+
+    public PaketMCU getPaket() {
+        return this.paket;
+    }
+
+    public void setPaket(PaketMCU paket) {
+        this.paket = paket;
+    }
+
 }

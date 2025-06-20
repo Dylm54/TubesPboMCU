@@ -40,4 +40,45 @@ public class User {
         this.noTelp = noTelp;
         this.password = password;
     }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNama() {
+        return this.nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public String getAlamat() {
+        return this.alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public String getNoTelp() {
+        return this.noTelp;
+    }
+
+    public void setNoTelp(String noTelp) {
+        this.noTelp = noTelp;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }   

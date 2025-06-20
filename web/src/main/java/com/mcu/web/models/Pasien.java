@@ -15,4 +15,5 @@ public class Pasien extends User{
     public List<PendaftaranMCU> getRiwayatPendaftaran() {
         return riwayatPendaftaran;
     }
+    
 }   
